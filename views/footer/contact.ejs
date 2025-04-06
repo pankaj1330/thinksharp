@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+    <%- include('../partials/headlinks.ejs') %>
+
+    <style>
+      .footer_menu ul {
+        list-style: none;
+      }
+
+      .footer_menu ul li {
+        margin: 12px 0;
+        padding: 0;
+      }
+
+      .footer_menu li a {
+        color: grey;
+        text-decoration: none;
+      }
+
+      .footer_menu li a:hover {
+        color: blue;
+        text-decoration: underline;
+      }
+
+      .footer_social_area {
+        position: relative;
+        z-index: 1;
+      }
+
+      .footer_social_area a {
+        border-radius: 50%;
+        height: 40px;
+        text-align: center;
+        width: 40px;
+        display: inline-block;
+        background-color: #f5f5ff;
+        line-height: 40px;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        margin-right: 10px;
+      }
+
+      .footer_social_area a i {
+        line-height: 36px;
+      }
+
+      .footer_social_area a:hover,
+      .footer_social_area a:focus {
+        color: #ffffff;
+      }
+
+      .img-fluid {
+        max-width: 80%;
+        height: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <%- include('../partials/navbar.ejs') %>
+    
+  <!-- ----------------------------------------------------------------------------------category section---------------------------------------------------- -->
+    <div class="container my-5">
+      <h1 class="text-center my-5 wow animate__animated animate__fadeInUp">
+        Contact Us
+      </h1>
+      <p class="text-center mb-5">Thank you for your interest in reaching out to us. We value your feedback, inquiries, and suggestions. Please feel free to contact us at <span style="color: blue;">tsthinksharp01@gmail.com</span>.</p>
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <div class="row justify-content-center">
+            <div class="col-md-6">
+              <h3
+                class="heading mb-4 wow animate__animated animate__fadeInLeft"
+                style="font-size: 40px; font-weight: bold"
+              >
+                Let's talk about everything!
+              </h3>
+              <p class="wow animate__animated animate__fadeInLeft">
+                Enhance Your Mental Fitness with Customized Support.
+              </p>
+
+              <p>
+                <img
+                  src="/images/contactnew.png"
+                  alt="Image"
+                  class="img-fluid wow wow animate__animated animate__fadeInLeft"
+                  style="max-width: 100%"
+                />
+              </p>
+            </div>
+            <div class="col-md-6">
+              <form class="mb-5 contact-form" id ='form' >
+                <div class="row mb-4">
+                  <div
+                    class="col-md-12 form-group wow animate__animated animate__fadeInRight"
+                  >
+                    <input
+                      type="text"
+                      class="form-control p-3 border-0"
+                      style="background-color: rgba(128, 128, 128, 0.085)"
+                      name="name"
+                      id="name"
+                      placeholder="Your name"
+                    />
+                  </div>
+                </div>
+                <div class="row mb-4">
+                  <div
+                    class="col-md-12 form-group wow animate__animated animate__fadeInRight"
+                  >
+                    <input
+                      type="text"
+                      class="form-control p-3 border-0"
+                      style="background-color: rgba(128, 128, 128, 0.085)"
+                      name="email"
+                      id="email"
+                      placeholder="Email"
+                    />
+                  </div>
+                </div>
+                <div class="row mb-4">
+                  <div
+                    class="col-md-12 form-group wow animate__animated animate__fadeInRight"
+                  >
+                    <input
+                      type="text text-subject"
+                      class="form-control p-3 border-0"
+                      style="background-color: rgba(128, 128, 128, 0.085)"
+                      name="subject"
+                      id="subject"
+                      placeholder="Subject"
+                    />
+                  </div>
+                </div>
+                <div class="row mb-4">
+                  <div
+                    class="col-md-12 form-group wow animate__animated animate__fadeInRight"
+                  >
+                    <textarea
+                      class="form-control p-3 border-0 text-main-content"
+                      style="background-color: rgba(128, 128, 128, 0.085)"
+                      name="message"
+                      id="message"
+                      cols="30"
+                      rows="7"
+                      placeholder="Write your message"
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <input
+                      type="submit"
+                      value="Send Message"
+                      id = 'button'
+                      class="btn rounded-1 py-2 px-4 btn-dark fs-6 wow animate__animated animate__fadeInRight"
+                    />
+                    <span class="submitting"></span>
+                  </div>
+                </div>
+              </form>
+
+              <div id="form-message-warning mt-4"></div>
+              <!-- <div id="form-message-success">
+                Your message was sent, thank you!
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <%- include('../partials/footer.ejs') %>
+
+      <%- include('../partials/scriptlinks.ejs') %>
+
+      <script src="https://smtpjs.com/v3/smtp.js"></script>
+      <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+      
+      <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  
+  <script type="text/javascript">
+    emailjs.init('NhDU00aDt5Iqdb8Bg')
+  </script>
+    <script>
+    const btn = document.getElementById('button');
+
+  document.getElementById('form')
+ .addEventListener('submit', function(event) {
+   event.preventDefault();
+
+   btn.value = 'Sending...';
+
+   const serviceID = 'service_fxopcja';
+   const templateID = 'template_o730x4o';
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+      btn.value = 'Send Email';
+      alert('Sent!');
+    }, (err) => {
+      btn.value = 'Send Email';
+      alert(JSON.stringify(err));
+    });
+});
+    </script>
+  </body>
+</html>

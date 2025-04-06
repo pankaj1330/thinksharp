@@ -1,0 +1,77 @@
+<div class="preloader-div">
+    <span class="preloader"></span>
+  </div>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary py-2 wow animate__animated animate__fadeInDown">
+        <div class="container">
+          <a class="navbar-brand" href="/" style="font-size: 24px; font-weight: 600;">
+            <img src="/tsLogo.png" alt="ThinkSharp" width="64px">
+          </a>
+          <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+
+              
+              
+              <% if(locals.user) { %>
+                <% if(parseInt(locals.user.classSection) >= 4 ) { %>
+                <li class="nav-item">
+                  <a class="nav-link" href="/categories">Practice & Excel</a>
+                </li>
+                <% } %>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    MindPlay
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/games/card-matching-game">Card Matching</a></li>
+                    <li><a class="dropdown-item" href="/games/rapid-math">Rapid Maths</a></li>
+                    <li><a class="dropdown-item" href="/games/tic-tac-toe-game">Tic Tak Toe</a></li>
+                    <li><a class="dropdown-item" href="/games/sudoku-game">Sudoku</a></li>
+                    <li><a class="dropdown-item" href="/games/emoji-sequence-game">Emoji Sequence</a></li>
+                    <li><a class="dropdown-item" href="/games/word-scramble-game">Word Scramble</a></li>
+                    <li><a class="dropdown-item" href="/games/word-guess-game">Word Guess</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/medispot">MediSpot</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/flashcards">FlashCards</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/aboutus">About Us</a>
+                </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <%= locals.user.firstName %>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                  <li><a class="dropdown-item" href="/editprofile">Edit profile</a></li>
+                  <% if(locals.user.getEbooks){ %>
+                    <li><a class="dropdown-item" href="/ebooks">E-books</a></li>
+                  <% } %>
+                </ul>
+              </li>
+              <% } else {%>
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="/aboutus">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/contact-us">Contact</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/login">Login</a>
+              </li>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+      </nav>

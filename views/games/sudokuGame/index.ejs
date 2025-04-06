@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku</title>
+    <link rel="icon" type="image/x-icon" href="/tsTitle.png">
+    <link rel="stylesheet" href="/games/sudoku/style.css">
+    <link rel="stylesheet" href="/fontAwesome/css/all.min.css">
+    <!-- <link rel="stylesheet" href="/loader/loader.css"> -->
+    <style>
+        .check-model {
+            text-align: center;
+            font-family: sans-serif;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 32px;
+            border-radius: 8px;
+            background-color: rgb(23, 23, 23);
+        }
+
+        .check-model button {
+            background-color: white;
+            color: black;
+            padding: 4px;
+            display: inline;
+            border-radius: 4px;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .radio-toolbar{
+      margin-top: 20px;
+    }
+    .radio-toolbar h3{
+      margin-bottom: 5px;
+    }
+    .radio-toolbar input[type="radio"] {
+      opacity: 0;
+      position: fixed;
+      width: 0;
+    }
+
+    .radio-toolbar label {
+      display: inline-block;
+      /* background-color: #ddd; */
+      padding: 4px 12px;
+      font-family: sans-serif, Arial;
+      font-size: 16px;
+      border: 1px solid #444;
+      border-radius: 4px;
+      /* width:80px; */
+      cursor: pointer;
+    }
+
+    .radio-toolbar label:hover {
+      background-color: #dfd;
+    }
+
+    .radio-toolbar input[type="radio"]:focus+label {
+      border: 2px dashed #444;
+    }
+
+    .radio-toolbar input[type="radio"]:checked+label {
+      background-color: #bfb;
+      border-color: #4c4;
+    }
+    </style>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- <h1>SUDOKO GAME</h1> -->
+    <div id="game_type" class="radio-toolbar">
+        <h3>CHOOSE LEVEL :</h3>
+        <input type="radio" class="label" name="diff_level" id="easy" checked>
+        <label for="easy">Easy</label>
+        <input type="radio" class="label" name="diff_level" id="medium" value="0">
+        <label for="medium">Medium</label>
+        <input type="radio" class="label" name="diff_level" id="hard" value="1">
+        <label for="hard">Hard</label>
+
+        <h3>TIME LIMIT :</h3>
+        <input type="radio" id="time1" class="label" name="time">
+        <label for="time1"><span id="time1_min">03</span>:<span
+            id="time1_sec">00</span></label>
+        <input type="radio" id="time2" class="label" name="time">
+        <label for="time2"><span id="time2_min">05</span>:<span
+            id="time2_sec">00</span></label>
+        <input type="radio" id="time3" class="label" name="time">
+        <label for="time3"><span id="time3_min">10</span>:<span
+            id="time3_sec">00</span></label>
+
+    </div>
+   
+
+    <div id="timer" style="
+    display: flex;
+    justify-content: center;background: #cecece;
+    border-radius: 57px 
+
+;
+"><img src="/games/sudoku/stopwatch.png" style="height: 25px;margin-right: 5px;"><span id="time_min" class="timercount">
+            00</span>:<span id="time_sec" class="timercount"> 00</span></div>
+
+    <div id="main">
+        <div id="row1">
+            <div id="box1" class="box"></div>
+            <div id="box2" class="box"></div>
+            <div id="box3" class="box"></div>
+        </div>
+        <div id="row2">
+            <div id="box4" class="box"></div>
+            <div id="box5" class="box"></div>
+            <div id="box6" class="box"></div>
+        </div>
+        <div id="row3">
+            <div id="box7" class="box"></div>
+            <div id="box8" class="box"></div>
+            <div id="box9" class="box"></div>
+        </div>
+
+
+    </div>
+    <div class="btns">
+
+        <button type="button" id="start" onclick="start()"><i class="fa-solid fa-play" style="color: #FFD43B;">
+                Start</i></button>
+        <button type="button" id="replay" onclick="replay()"><i class="fa-solid fa-rotate-right"
+                style="color: #74C0FC;"> New Game</i></button>
+        <button type="button" id="answer" onclick="answer()"><i class="fa-regular fa-eye" style="color: #a852ff;">
+                Answer</i></button>
+        <button type="button" id="check" onclick="check()"><i class="fa-solid fa-check" style="color: #20c10b;">
+                Check</i></button>
+    </div>
+
+    <!-- <div id="lives">YOU HAVE ONLY <span id="rem_live">3</span> LIVES</div> -->
+
+    <div class="check-model hide">
+        <h2 style="
+        color: #1ec81e;
+    ">You win</h2>
+        <button onclick="nextgame()">Next</button>
+    </div>
+
+        <div class="how-to-play" style="text-align: center; color: blue;">
+            <button id="show-model" style="font-size: 20px; margin-top: 100px; color: blue; text-decoration: none;"><i class="fa-regular fa-circle-question"></i></button>
+        </div>
+
+    <div class="container-model-main hide">
+        <section class="container-model">
+            <!-- <div class="header-section-model">
+                <img src="./ccc-removebg-preview.png" alt="Header Image" class="header-img">
+            </div> -->
+
+            <div class="main-content-model">
+                <h4 style="margin-bottom: 3px;margin-top: 0px;font-weight: 700; font-size: large;">How to Play Sudoku!?
+                    </h1>
+                    <p style="
+        font-size: small;margin-bottom: 5px;
+    ">Welcome to the world of Sudoku, a logic puzzle that will challenge your mind and leave you feeling
+                        accomplished. Here's your guide to becoming a Sudoku master:
+                    </p>
+
+                    <h4 style="margin-bottom: 3px;margin-top: 0px; font-weight: 700; font-size: large;">Objective:</h2>
+                        <ul>
+                            <li style="
+        font-size: small;margin-bottom: 5px;
+    ">
+                                <p>Fill in the empty squares of a 9x9 grid with numbers 1-9, ensuring that:</p>
+                            </li>
+                            <li style="
+        font-size: small;margin-bottom: 5px;
+    ">
+                                <p>No row, column, or 3x3 subgrid contains the same number more than once.</p>
+                            </li>
+                        </ul>
+
+                        <h4 style="margin-bottom: 3px;margin-top: 0px; font-weight: 700; font-size: large;">Getting
+                            Started:</h2>
+                            <ul>
+                                <li style="
+        font-size: small;margin-bottom: 5px;
+    ">
+                                    <p>Each Sudoku puzzle starts with a partially filled grid, providing clues to help
+                                        you solve the
+                                        rest.</p>
+                                </li>
+                                <li style="
+        font-size: small;margin-bottom: 5px;
+    ">
+                                    <p>The grid is divided into nine 3x3 subgrids, outlined by bold lines.</p>
+                                </li>
+                            </ul>
+
+                            <h4 style="margin-bottom: 3px;margin-top: 0px; font-weight: 700; font-size: large;">Making
+                                Your Moves:</h2>
+
+                                <ul>
+                                    <li style="
+        font-size: small;margin-bottom: 5px;
+    ">
+                                        <p>Choose an empty square and consider which numbers 1-9 could potentially fit
+                                            there.</p>
+                                    </li>
+                                    <li style="
+        font-size: small;margin-bottom: 5px;
+    ">
+                                        <p>Eliminate possibilities based on the existing numbers in the same row,
+                                            column, and subgrid.
+                                        </p>
+                                    </li>
+                                    <li style="
+        font-size: small;margin-bottom: 5px;
+    ">
+                                        <p>Use logic and deduction to narrow down your options.</p>
+                                    </li>
+                                    <li style="
+        font-size: small;margin-bottom: 5px;
+    ">
+                                        <p>Remember, there's only one correct solution for each Sudoku puzzle!</p>
+                                    </li>
+                                </ul>
+
+
+
+                                <h4>Tips for Success:</h2>
+                                    <ul>
+                                        <li style="
+                    font-size: small;margin-bottom: 5px;
+                ">Scan the entire grid: Don't get stuck focusing on one area. Look for opportunities to place
+                                            numbers
+                                            across the entire puzzle</li>
+                                        <li style="
+                    font-size: small;margin-bottom: 5px;
+                ">Don't be afraid to guess: Sometimes, making an educated guess can help you break through and see
+                                            the
+                                            bigger picture.</li>
+                                        <li style="
+                    font-size: small;margin-bottom: 5px;
+                ">Practice makes perfect! The more you play, the better you'll become at Sudoku.</li>
+                                    </ul>
+
+
+                                    <div style="text-align: center;">
+                                        <button id="close-model" class="close-btn-model">Close</button>
+                                    </div>
+            </div>
+        </section>
+    </div>
+
+    
+
+    <!-- <link rel="stylesheet" href="/loader/loader.css"> -->
+    <script src="/games/sudoku/script.js"></script>
+    
+</body>
+</html>

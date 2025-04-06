@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Word Guess Game</title>
+  <!--Google Fonts-->
+  <%- include('../../partials/headlinks.ejs') %>
+  <link rel="stylesheet" href="/games/wordGuessing/style.css" />
+  
+</head>
+
+<body>
+
+  
+  <div class="preloader-div">
+    <span class="preloader"></span>
+  </div>
+
+  <div class="wrapper">
+    <div class="title-container">
+      
+    </div>
+    <div class="hint-ref"></div>  
+    <div id="user-input-section" style="margin-top: -10px;"></div>
+    <div id="message"></div>
+    <div id="letter-container"></div>
+    <div class="next-btn-div">
+      <button id="next-qsn">Want to Skip!</button>
+    </div>
+    <div class="title-container">
+      
+    </div>
+    <div style="text-align: center; margin-top: 16px;">
+      <button id="show-model" style="font-size: 20px;"><i class="fa-regular fa-circle-question"></i></button>
+    </div>
+  </div>
+  <div class="controls-container">
+    <div id="result" style="
+    color: #57d500;
+    font-size: larger;
+"></div>
+    <div id="word" style="
+    font-size: larger;
+"></div>
+    <button id="start">Next</button>
+  </div>
+
+  <div class="container-model-main hide">
+    <section class="container-model">
+      <!-- <div class="header-section-model">
+        <img src="./ccc-removebg-preview.png" alt="Header Image" class="header-img">
+      </div> -->
+
+      <div class="main-content-model">
+        <h4 style="margin-bottom: 3px;margin-top: 0px;/* font-weight: 500; */font-size: large;font-weight: 900;">How To Play Guess the Word!?</h4>
+        <p style="font-size: small;">Get ready to test your vocabulary and expand your word knowledge with Guess the Word! In this exciting game,
+          you'll use clues like synonyms, sentences, or even definitions to guess the mystery word.</p>
+
+        <h4 style="margin-bottom: 3px;margin-top: 0px;/* font-weight: 500; */font-size: large;font-weight: 900;">Start: <h5 style="font-size: small;">Each round begins with a new clue displayed on the screen. This clue can be:</h5>
+        </h4>
+        <ul>
+          <li style="font-size: small; margin-left:18px;">
+            <p>Synonym: A word with a similar meaning to the hidden word.</p>
+
+          </li>
+          <li style="font-size: small; margin-left:18px;">
+            <p>Sentence: A sentence using the hidden word in context.</p>
+
+          </li>
+          <li style="font-size: small; margin-left:18px;">
+            <p>Definition: A dictionary definition of the hidden word.</p>
+          </li>
+        </ul>
+
+        <h4 style="margin-bottom: 3px;margin-top: 0px;/* font-weight: 500; */font-size: large;font-weight: 900;">Guess & Submit:</h4>
+        <p style="font-size: small;">Based on the clue, think of the word it describes and type your guess in the designated field. Click "Submit"
+          to reveal if your answer is correct.</p>
+
+        <h4 style="margin-bottom: 3px;margin-top: 0px;/* font-weight: 500; */font-size: large;font-weight: 900;">Continue: </h4>
+        <p style="font-size: small;">Keep playing through multiple rounds with different clues and hidden words. Each round will test your
+          understanding of various aspects of language and vocabulary.</p>
+
+        <h4 style="margin-bottom: 3px;margin-top: 0px;/* font-weight: 500; */font-size: large;font-weight: 900;">Tips for Success:</h4>
+        <ul>
+          <li style="font-size: small; margin-left:18px;">Pay attention to every detail in the clue, as it holds the key to unlocking the word.</li>
+          <li style="font-size: small; margin-left:18px;">Don't limit yourself to the most obvious answer. Sometimes, the clue might be a metaphor or have a deeper
+            meaning.</li>
+          <li style="font-size: small; margin-left:18px;">Even if you're unsure, taking an educated guess can spark new ideas and help you learn new words.</li>
+        </ul>
+
+
+        <div style="text-align: center;">
+          <button id="close-model" class="close-btn-model">Close</button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Script -->
+  <script src="/games/wordGuessing/script.js"></script>
+  <%- include('../../partials/scriptlinks.ejs') %>
+
+</body>
+
+</html>

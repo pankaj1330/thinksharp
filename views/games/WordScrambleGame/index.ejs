@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Scramble</title>
+    <%- include('../../partials/headlinks.ejs') %>
+
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+            font-style: normal;
+            line-height: normal;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+            background-image: url(/games/wordScramble/img/bg-guess-the-word.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+
+            border-radius: 31px;
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            background: rgba(255, 255, 255, 0.14);
+            backdrop-filter: blur(22.5px);
+
+            width: fit-content;
+
+        }
+
+        .title-container {
+            width: 100%;
+            padding: 20px 20px;
+
+            border-bottom: 1px solid rgb(255, 255, 255, 0.45);
+        }
+
+        .title {
+            font-size: 20px;
+            font-weight: 400;
+            color: #FFF;
+        }
+
+        .wrapper {
+            border-bottom: 1px solid rgb(255, 255, 255, 0.45);
+        }
+
+        .word-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            padding-top: 20px;
+            padding-bottom: 20px;
+
+            width: fit-content;
+            margin: 0 auto;
+
+        }
+
+        .word {
+            margin: 0 auto;
+            color: #FFF;
+            font-size: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+        }
+
+        .range-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            width: 100%;
+        }
+
+        .range-slider-title {
+            color: #F0F0F0;
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        .range-slider-value {
+            color: #FFF;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .range-slider {
+            --webkit-appearance: none;
+            width: 370px;
+            height: 4px;
+            margin-bottom: 20px;
+
+            border-radius: 5px;
+            background: #ffffff;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        .range-slider::-webkit-slider-thumb:hover {
+            box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.16);
+            transition: 0.3s ease-in-out;
+        }
+
+        #input {
+            width: 100%;
+            padding: 13px 16px;
+            margin-bottom: 20px;
+
+            border: none;
+            outline: none;
+            background: transparent;
+
+            border-radius: 10px;
+            background-color: #eff0f6;
+        }
+
+        #input::placeholder {
+            margin-top: auto;
+            margin-bottom: auto;
+
+            color: #858585;
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        .buttons-container {
+            list-style: none;
+            width: 100%;
+            padding-left: 0px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        button {
+            padding: 11px 22px;
+            border: none;
+            background: none;
+            text-align: center;
+            cursor: pointer;
+
+            width: 160px;
+            border-radius: 2px;
+
+            font-size: 12px;
+            font-weight: 400;
+
+            transition: all 0.3s linear;
+            border-radius: 10px;
+            margin-bottom: 5px;
+        }
+
+        .refresh-btn {
+            border: 1px solid #F1F1F1;
+            color: #F0F0F0;
+        }
+
+        .refresh-btn:hover {
+            background-color: #252525;
+            border: 1px solid #252525;
+        }
+
+        .check-btn {
+            background: #1F1209;
+            color: #F0F0F0;
+        }
+
+        .check-btn:hover {
+            background-color: #e8e7e7;
+            border: 1px solid #e8e7e7;
+            color: #1F1209;
+        }
+
+        .img-wrapper {
+            position: relative;
+            margin: 20px 140px;
+            border-radius: 24px;
+            /* background-image: url(../img/words-img.jpeg); */
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 550px;
+            height: 220px;
+            background-color: #2d2a3b4a;
+        }
+
+
+
+
+
+
+        /* Styled alert boxes */
+        .alert-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 50px;
+            border-radius: 20px;
+            background: #fff;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+            font-size: 24px;
+            z-index: 999;
+            height: 145px;
+            width: 300px;
+            transition: all ease 0.1s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .alert-box.error {
+            background: #0e0d0de6;
+            color: #edeef4;
+            height: 30%;
+            
+            
+        }
+
+        .alert-box.error2 {
+            background: #0e0d0de6;
+            color: #edeef4;
+            height: 30%;
+            
+            
+        }
+
+        .alert-box.success {
+            background: #0e0d0de6;
+
+            color: #edeef4;
+            height: 30%;
+                
+        }
+
+        .alert-box button {
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 15px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .alert-box button:hover {
+            background: #f2f2f2;
+        }
+
+        .alert-box img {
+            width: 100%;
+            /* height: 50px; */
+           
+        }
+
+        /* Additional enhancements */
+        .word {
+            /* ... existing styles ... */
+            user-select: none;
+            /* Prevent text selection */
+        }
+
+
+        .hint {
+            width: 400px;
+            text-align: center;
+        }
+
+
+
+
+        /* Existing styles */
+
+        @media only screen and (max-width: 480px) {
+
+            /* Styles for Extra small (mobile phones) */
+            body {
+                background-size: auto;
+                height: auto;
+                width: 97%;
+            }
+
+            .container {
+                width: 90%;
+            }
+
+            .img-wrapper {
+                width: 100%;
+                margin: 20px 0;
+            }
+
+            .word-container {
+                width: 90%;
+            }
+
+            .word {
+                font-size: 19px;
+                letter-spacing: 8px;
+            }
+
+            .hint {
+                width: 90%;
+                font-size: 12px;
+            }
+
+            .range-slider {
+                width: 80%;
+            }
+
+            #input {
+                width: 90%;
+            }
+
+            .buttons-container {
+                width: 90%;
+                display: contents;
+            }
+
+            .img-wrapper ul {
+                font-size: small;
+            }
+        }
+
+        @media only screen and (min-width: 481px) and (max-width: 768px) {
+
+            /* Styles for Small (tablets) */
+            body {
+                background-size: auto;
+            }
+
+            .container {
+                width: 90%;
+            }
+
+            .img-wrapper {
+                width: 100%;
+                margin: 20px 0;
+            }
+
+            .word-container {
+                width: 90%;
+            }
+
+            .word {
+                font-size: 26px;
+                letter-spacing: 9px;
+            }
+
+            .hint {
+                width: 90%;
+                font-size: 14px;
+            }
+
+            .range-slider {
+                width: 80%;
+            }
+
+            #input {
+                width: 90%;
+            }
+
+            .buttons-container {
+                width: 90%;
+            }
+        }
+
+        @media only screen and (min-width: 769px) and (max-width: 992px) {
+
+            /* Styles for Medium (small laptops) */
+            body {
+                background-size: auto;
+            }
+
+            .container {
+                width: 80%;
+            }
+
+            .img-wrapper {
+                width: 80%;
+                margin: 20px auto;
+            }
+
+            .word-container {
+                width: 80%;
+            }
+
+            .word {
+                font-size: 28px;
+                letter-spacing: 10px;
+            }
+
+            .hint {
+                width: 80%;
+                font-size: 16px;
+            }
+
+            .range-slider {
+                width: 70%;
+            }
+
+            #input {
+                width: 80%;
+            }
+
+            .buttons-container {
+                width: 80%;
+            }
+        }
+
+        @media only screen and (min-width: 993px) and (max-width: 1200px) {
+
+            /* Styles for Large (desktops) */
+            body {
+                background-size: auto;
+            }
+
+            .container {
+                width: 70%;
+            }
+
+            .img-wrapper {
+                width: 70%;
+                margin: 20px auto;
+            }
+
+            .word-container {
+                width: 70%;
+            }
+
+            .word {
+                font-size: 30px;
+                letter-spacing: 11px;
+            }
+
+            .hint {
+                width: 70%;
+                font-size: 18px;
+            }
+
+            .range-slider {
+                width: 60%;
+            }
+
+            #input {
+                width: 70%;
+            }
+
+            .buttons-container {
+                width: 100%;
+            }
+        }
+
+        @media only screen and (min-width: 1201px) {
+
+            /* Styles for Extra large (large desktops and TVs) */
+            body {
+                background-size: cover;
+            }
+
+            .container {
+                width: 60%;
+            }
+
+            .img-wrapper {
+                width: 60%;
+                margin: 20px auto;
+            }
+
+            .word-container {
+                width: 60%;
+            }
+
+            .word {
+                font-size: 32px;
+                letter-spacing: 12px;
+            }
+
+            .hint {
+                width: 60%;
+                font-size: 20px;
+            }
+
+            .range-slider {
+                width: 50%;
+            }
+
+            #input {
+                width: 60%;
+            }
+
+            .buttons-container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="preloader-div">
+        <span class="preloader"></span>
+      </div>
+
+    <div class="container">
+        <div class="title-container">
+            <h1 class="title">🎓 Word Scramble</h1>
+        </div>
+
+        <div class="wrapper">
+            <div class="word-container">
+                <h2 class="word"></h2>
+                <h4 class="hint">hint</h4>
+                <div class="range-container">
+                    <p class="range-slider-title">Length</p>
+                    <p class="range-slider-value">7</p>
+                </div>
+                <input type="range" min="4" max="12" value="7" class="range-slider" id="myRange">
+                <input type="text" id="input" placeholder="Enter a word" autofocus />
+                <ul class="buttons-container">
+                    <li><button class="refresh-btn">Refresh word</button></li>
+                    <li><button class="check-btn">Check word</button></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="img-container">
+            <div class="img-wrapper">
+                <h4 style="text-align: center;">How to Play</h4>
+
+                <p class="img-text">
+                <ul>
+                    <li>
+                        <bold>Select Difficulty:</bold> Choose a difficulty level.
+                    </li>
+                    <li>
+                        <bold>Receive a Word:</bold> Get a jumbled word to unscramble.
+                    </li>
+                    <li>
+                        <bold>Use Hints Wisely:</bold> Limited hints are available for assistance.
+                    </li>
+                </ul>
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="/games/wordScramble/script.js"></script>
+    <%- include('../../partials/scriptlinks.ejs') %>
+</body>
+
+</html>

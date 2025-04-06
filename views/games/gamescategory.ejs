@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindPlay Categories</title>
+    <%- include('../partials/headlinks.ejs') %>
+    <style>
+        .footer_menu ul {
+          list-style: none;
+        }
+    
+        .footer_menu ul li {
+          margin: 12px 0;
+          padding: 0;
+        }
+    
+        .footer_menu li a {
+          color: grey;
+          text-decoration: none;
+        }
+    
+        .footer_menu li a:hover {
+          color: blue;
+          text-decoration: underline;
+        }
+    
+        .footer_social_area {
+          position: relative;
+          z-index: 1;
+        }
+    
+        .footer_social_area a {
+          border-radius: 50%;
+          height: 40px;
+          text-align: center;
+          width: 40px;
+          display: inline-block;
+          background-color: #f5f5ff;
+          line-height: 40px;
+          -webkit-box-shadow: none;
+          box-shadow: none;
+          margin-right: 10px;
+        }
+    
+        .footer_social_area a i {
+          line-height: 36px;
+        }
+    
+        .footer_social_area a:hover,
+        .footer_social_area a:focus {
+          color: #ffffff;
+        }
+    
+        .img-fluid {
+          max-width: 80%;
+          height: auto;
+        }
+    
+        
+      </style>
+</head>
+<body>
+
+  <%- include('../partials/navbar.ejs') %>
+<!-- ----------------------------------------------------------------------------------category section---------------------------------------------------- -->
+      <section class="container mt-2 mb-2" style="min-height: 100vh;">
+        <h1 class="text-center my-5 cathead wow animate__animated animate__fadeInUp">Choose the Category</h1>
+        <div class="row">
+          <div class="col-md-4 col-sm-6 text-center mb-3 mx-auto crd1 wow animate__animated animate__fadeInUp">
+            <div class="card shadow p-3" style="width: 100%; height: 100%; border: none">
+              <img src="/gamesImages/card thumbnail.png" class="card-img-top mx-auto img1 wow wow wow wow animate__animated animate__fadeInUp"
+                style="width: 85%" alt="...">
+              <div class="card-body">
+                <h5 class="card-title crdh1 wow wow wow animate__animated animate__fadeInUp">Card Matching</h5>
+                <p class="card-text crdp1 wow wow wow animate__animated animate__fadeInUp">Match pairs of cards to improve memory and cognitive abilities.</p>
+                <a href="/games/card-matching-game" class="btn btn-primary mx-auto crdb1 wow wow wow animate__animated animate__fadeInUp"
+                  style="width: 30px; height: 30px; border-radius: 50%; padding: 0; display: grid; place-items: center;"><i
+                    class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 text-center mb-3 mx-auto crd1 wow animate__animated animate__fadeInUp">
+            <div class="card shadow p-3" style="width: 100%; height: 100%; border: none">
+              <img src="/gamesImages/rapid maths.png" class="card-img-top mx-auto img1 wow wow wow wow animate__animated animate__fadeInUp"
+                style="width: 85%" alt="...">
+              <div class="card-body">
+                <h5 class="card-title crdh1 wow wow wow animate__animated animate__fadeInUp">Rapid Maths</h5>
+                <p class="card-text crdp1 wow wow wow animate__animated animate__fadeInUp">Enhance mental arithmetic skills with quick math challenges.</p>
+                <a href="/games/rapid-math" class="btn btn-primary mx-auto crdb1 wow wow wow animate__animated animate__fadeInUp"
+                  style="width: 30px; height: 30px; border-radius: 50%; padding: 0; display: grid; place-items: center;"><i
+                    class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 text-center mb-3 mx-auto crd1 wow animate__animated animate__fadeInUp">
+            <div class="card shadow p-3" style="width: 100%; height: 100%; border: none">
+              <img src="/gamesImages/emoji thumbnail.png" class="card-img-top mx-auto img1 wow wow wow wow animate__animated animate__fadeInUp"
+                style="width: 100%" alt="...">
+              <div class="card-body">
+                <h5 class="card-title crdh1 wow wow wow animate__animated animate__fadeInUp">Emoji Sequence</h5>
+                <p class="card-text crdp1 wow wow wow animate__animated animate__fadeInUp">Strengthen pattern recognition and cognitive agility with emoji sequences.</p>
+                <a href="/games/emoji-sequence-game" class="btn btn-primary mx-auto crdb1 wow wow wow animate__animated animate__fadeInUp"
+                  style="width: 30px; height: 30px; border-radius: 50%; padding: 0; display: grid; place-items: center;"><i
+                    class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 text-center mb-3 mx-auto crd1 wow animate__animated animate__fadeInUp">
+            <div class="card shadow p-3" style="width: 100%; height: 100%; border: none">
+              <img src="/gamesImages/tic tac thumbnail.png" class="card-img-top mx-auto img1 wow wow wow wow animate__animated animate__fadeInUp"
+                style="width: 88%" alt="...">
+              <div class="card-body">
+                <h5 class="card-title crdh1 wow wow wow animate__animated animate__fadeInUp">Tic Tac Toe</h5>
+                <p class="card-text crdp1 wow wow wow animate__animated animate__fadeInUp">Exercise strategic thinking and planning in this classic game of Xs and Os.</p>
+                <a href="/games/tic-tac-toe-game" class="btn btn-primary mx-auto crdb1 wow wow wow animate__animated animate__fadeInUp"
+                  style="width: 30px; height: 30px; border-radius: 50%; padding: 0; display: grid; place-items: center;"><i
+                    class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 text-center mb-3 mx-auto crd1 wow animate__animated animate__fadeInUp">
+            <div class="card shadow p-3" style="width: 100%; height: 100%; border: none">
+              <img src="/gamesImages/Word guess thumbnail.png" class="card-img-top mx-auto img1 wow wow wow wow animate__animated animate__fadeInUp"
+                style="width: 99%" alt="...">
+              <div class="card-body">
+                <h5 class="card-title crdh1 wow wow wow animate__animated animate__fadeInUp">Word Guess</h5>
+                <p class="card-text crdp1 wow wow wow animate__animated animate__fadeInUp">Expand vocabulary and linguistic skills by guessing words from clues.</p>
+                <a href="/games/word-guess-game" class="btn btn-primary mx-auto crdb1 wow wow wow animate__animated animate__fadeInUp"
+                  style="width: 30px; height: 30px; border-radius: 50%; padding: 0; display: grid; place-items: center;"><i
+                    class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 text-center mb-3 mx-auto crd2 wow wow wow animate__animated animate__fadeInUp">
+            <div class="card shadow p-3" style="width: 100% ; height: 100%; border: none">
+              <img src="/gamesImages/scramble thumbnail.png" class="card-img-top mx-auto img2 wow wow animate__animated animate__fadeInUp"
+                style="width: 75%" alt="...">
+              <div class="card-body">
+                <h5 class="card-title crdh2 wow wow animate__animated animate__fadeInUp">Word Scramble</h5>
+                <p class="card-text">Improve word recognition and problem-solving by unscrambling letters.</p>
+                <a href="/games/word-scramble-game" class="btn btn-primary mx-auto crdb2 wow wow animate__animated animate__fadeInUp"
+                  style="width: 30px; height: 30px; border-radius: 50%; padding: 0; display: grid; place-items: center;"><i
+                    class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 text-center mb-3 mx-auto crd3 wow wow animate__animated animate__fadeInUp">
+            <div class="card shadow p-3" style="width: 100% ; height: 100%; border: none">
+              <img src="/gamesImages/sudoku thumbnail.png" class="card-img-top mx-auto img2 wow wow animate__animated animate__fadeInUp"
+                style="width: 87%" alt="...">
+              <div class="card-body">
+                <h5 class="card-title crdh3 wow wow animate__animated animate__fadeInUp">Sudoku</h5>
+                <p class="card-text">Sharpen logical reasoning and deduction through solving Sudoku puzzles.</p>
+                <a href="/games/sudoku-game" class="btn btn-primary mx-auto crdb3 wow wow animate__animated animate__fadeInUp"
+                  style="width: 30px; height: 30px; border-radius: 50%; padding: 0; display: grid; place-items: center;"><i
+                    class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <%- include('../partials/footer.ejs') %>
+
+
+  <%- include('../partials/scriptlinks.ejs') %>
+</body>
+</html>

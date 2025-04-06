@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice & Excel Categories</title>
+  <%- include('partials/headlinks.ejs') %>
+</head>
+
+<body>
+
+  <%- include('partials/navbar.ejs') %>
+  <!-- ----------------------------------------------------------------------------------category section---------------------------------------------------- -->
+  <section class="container mt-2 mb-2" style="min-height: 100vh;">
+    <h1 class="text-center my-5 cathead wow animate__animated animate__fadeInUp">Choose the Category</h1>
+    <div class="row">
+      <div class="col-md-4 col-sm-6 text-center mb-3 mx-auto crd1 wow animate__animated animate__fadeInUp">
+        <div class="card shadow p-3" style="width: 100%; height: 100%; border: none">
+          <img src="/images/memory enhancement.png"
+            class="card-img-top mx-auto img1 wow wow wow wow animate__animated animate__fadeInUp" style="width: 48%"
+            alt="...">
+          <div class="card-body">
+            <h5 class="card-title crdh1 wow wow wow animate__animated animate__fadeInUp">Memory Enhancement</h5>
+            <!-- <p class="card-text crdp1 wow wow wow animate__animated animate__fadeInUp"><ul>
+              <Li>Improving memory recall.</Li>
+              <li>Strategies for memory enhancement.</li>
+            </ul></p> -->
+            <a href="/mcqs?category=MemoryEnhancement" class="btn btn-primary mx-auto crdb1 wow wow wow animate__animated animate__fadeInUp"
+              style="width: 30px; height: 30px; border-radius: 50%; padding: 0; display: grid; place-items: center;"><i
+                class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 text-center mb-3 mx-auto crd1 wow animate__animated animate__fadeInUp">
+        <div class="card shadow p-3" style="width: 100%; height: 100%; border: none">
+          <img src="/images/attention and focus.png"
+            class="card-img-top mx-auto img1 wow wow wow wow animate__animated animate__fadeInUp" style="width: 50%"
+            alt="...">
+          <div class="card-body">
+            <h5 class="card-title crdh1 wow wow wow animate__animated animate__fadeInUp">Attention and Focus</h5>
+            <!-- <p class="card-text crdp1 wow wow wow animate__animated animate__fadeInUp"><ul>
+              <li>Enhancing concentration.</li>
+              <li>Focus improvement and exercises.</li>
+            </ul></p> -->
+            <a href="/mcqs?category=AttentionAndFocus" class="btn btn-primary mx-auto crdb1 wow wow wow animate__animated animate__fadeInUp"
+              style="width: 30px; height: 30px; border-radius: 50%; padding: 0; display: grid; place-items: center;"><i
+                class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 text-center mb-3 mx-auto crd1 wow animate__animated animate__fadeInUp">
+        <div class="card shadow p-3" style="width: 100%; height: 100%; border: none">
+          <img src="/images/cognative exercise.png"
+            class="card-img-top mx-auto img1 wow wow wow wow animate__animated animate__fadeInUp" style="width: 52%"
+            alt="...">
+          <div class="card-body">
+            <h5 class="card-title crdh1 wow wow wow animate__animated animate__fadeInUp">Cognitive Exercises</h5>
+            <!-- <p class="card-text crdp1 wow wow wow animate__animated animate__fadeInUp"><ul>
+              <li>
+                Critical thinking challenges.
+              </li>
+              <li>Problem-solving and practical scenarios.</li>
+            </ul></p> -->
+            <a href="/mcqs?category=Cognitive" class="btn btn-primary mx-auto crdb1 wow wow wow animate__animated animate__fadeInUp"
+              style="width: 30px; height: 30px; border-radius: 50%; padding: 0; display: grid; place-items: center;"><i
+                class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 text-center mb-3 mx-auto crd1 wow animate__animated animate__fadeInUp">
+        <div class="card shadow p-3" style="width: 100%; height: 100%; border: none">
+          <img src="/images/mental agilty.png"
+            class="card-img-top mx-auto img1 wow wow wow wow animate__animated animate__fadeInUp" style="width: 50%"
+            alt="...">
+          <div class="card-body">
+            <h5 class="card-title crdh1 wow wow wow animate__animated animate__fadeInUp">Mental Agility</h5>
+            <!-- <p class="card-text crdp1 wow wow wow animate__animated animate__fadeInUp"><ul>
+              <li>Rapid mental calculations.</li>
+              <li>Brain speed and agility challenges.</li>
+            </ul></p> -->
+            <a href="/mcqs?category=MentalAgility" class="btn btn-primary mx-auto crdb1 wow wow wow animate__animated animate__fadeInUp"
+              style="width: 30px; height: 30px; border-radius: 50%; padding: 0; display: grid; place-items: center;"><i
+                class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 text-center mb-3 mx-auto crd2 wow wow wow animate__animated animate__fadeInUp">
+        <div class="card shadow p-3" style="width: 100% ; height: 100%; border: none">
+          <img src="/images/emotinal brain.png" class="card-img-top mx-auto img2 wow wow animate__animated animate__fadeInUp"
+            style="width: 50%" alt="...">
+          <div class="card-body">
+            <h5 class="card-title crdh2 wow wow animate__animated animate__fadeInUp">Emotional Intelligence & the Brain</h5>
+            <!-- <p class="card-text"><ul><li>Empathy-building exercises.</li></ul></p> -->
+            <a href="/mcqs?category=EmotionalIntelligence" class="btn btn-primary mx-auto crdb2 wow wow animate__animated animate__fadeInUp"
+              style="width: 30px; height: 30px; border-radius: 50%; padding: 0; display: grid; place-items: center;"><i
+                class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <%- include('partials/footer.ejs') %>
+  <%- include('partials/scriptlinks.ejs') %>
+
+</body>
+
+</html>

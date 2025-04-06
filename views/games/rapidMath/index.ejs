@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapid Maths</title>
+
+    <%- include('../../partials/headlinks.ejs') %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            /* background: #ffffff !important; */
+            background: url('/images/rapidmaths.jpg');
+            background-size: cover;
+        }
+
+
+        .fa-sign-in-alt {
+            font-size: 27px;
+            color: #FF6B6B;
+            /* Change the color to your preference */
+            margin: 0 10px;
+            /* Add spacing around the icon */
+        }
+
+        .fa-sign-in-alt:hover {
+            color: rgb(206, 206, 247);
+        }
+
+        .app {
+            /* background: #ffdf6a; */
+            background-color: #a1ecffe8;
+            /* box-shadow: 3px 3px 10px rgb(137, 137, 137); */
+
+            width: 90%;
+            max-width: 600px;
+            margin: 100px auto 0;
+            border-radius: 10px;
+            padding: 30px;
+
+        }
+
+        .app h1 {
+            color: #001e4d;
+            font-weight: bold;
+            padding-bottom: 30px;
+
+        }
+
+        .quiz {
+            padding: 20px 0;
+
+        }
+
+        .quiz h2 {
+            font-size: 18px;
+            font-weight: bold;
+
+        }
+
+        .btn1 {
+            background: #fff;
+            color: #222;
+            font-weight: 500;
+            width: 100%;
+            border: 1px #efefef;
+            padding: 10px;
+            margin: 10px;
+            text-align: left;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+
+        }
+
+        /* .btn1:hover:not([disabled]) {
+        background: #222;
+        color: #fff;
+    } */
+
+        .btn1:disabled {
+            cursor: no-drop;
+        }
+
+        #next-btn {
+            background: #23a139;
+            color: #fff;
+            font-weight: 500;
+            width: 150px;
+            border: 0;
+            padding: 10px;
+            margin: 20px auto 0;
+            border-radius: 40px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .correct {
+            background: #6ddd9c;
+        }
+
+        .incorrect {
+            background: #f37070;
+        }
+
+        /*  ------------------------------------css for footer----------------------------------------- */
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
+
+
+
+        .footer {
+            /* background: transparent; */
+            background-color: rgb(22, 22, 22);
+            /* min-height: 365px; */
+            margin-top: 180px;
+            padding: 30px 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .social-icon,
+        .menu {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+
+        .social-icon__item,
+        .menu__item {
+            list-style: none;
+        }
+
+        .social-icon__link {
+            font-size: 2rem;
+            color: #fff;
+            margin: 0 10px;
+            display: inline-block;
+            transition: 0.5s;
+        }
+
+        .social-icon__link:hover {
+            transform: translateY(-10px);
+        }
+
+        .menu__link {
+            font-size: 1.2rem;
+            color: #fff;
+            margin: 0 10px;
+            display: inline-block;
+            transition: 0.5s;
+            text-decoration: none;
+            opacity: 0.75;
+            font-weight: 300;
+        }
+
+        .menu__link:hover {
+            opacity: 1;
+        }
+
+        .footer p {
+            color: #fff;
+            text-align: center;
+            letter-spacing: 5px;
+            margin: 15px 0 10px 0;
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        /*    responsive code-------------------------------------------------- */
+
+        #hud {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #hud-item {
+            width: 100%;
+        }
+
+        .hud-prefix {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .hud-main-text {
+            text-align: center;
+        }
+
+        #progressBar {
+            width: 100%;
+            height: 5px;
+            background-color: rgb(255, 255, 255);
+            /* border: 0.3rem solid #56a5eb; */
+            margin-top: 1.5rem;
+        }
+
+        #progressBarFull {
+            /* height: 1.4rem; */
+            height: 5px;
+            background-color: #0088ff;
+            width: 0%;
+        }
+
+        #quote {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        /* loader */
+
+.loading{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+.hide{
+    display: none;
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    margin: auto;
+    position: relative;
+  }
+  .loader:before {
+      content: '';
+      width: 48px;
+      height: 5px;
+      background: #000;
+      opacity: 0.25;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      border-radius: 50%;
+      animation: shadow 0.5s linear infinite;
+    }
+    .loader:after {
+      content: '';
+      width: 48px;
+      height: 48px;
+      background: #ff9b9b;
+      animation: bxSpin 0.5s linear infinite;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 4px;
+    }
+  @keyframes bxSpin {
+    17% {
+      border-bottom-right-radius: 3px;
+    }
+    25% {
+      transform: translateY(9px) rotate(22.5deg);
+    }
+    50% {
+      transform: translateY(18px) scale(1, .9) rotate(45deg);
+      border-bottom-right-radius: 40px;
+    }
+    75% {
+      transform: translateY(9px) rotate(67.5deg);
+    }
+    100% {
+      transform: translateY(0) rotate(90deg);
+    }
+  }
+
+  @keyframes shadow {
+    0%, 100% {
+      transform: scale(1, 1);
+    }
+    50% {
+      transform: scale(1.2, 1);
+    }
+  }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="preloader-div">
+        <span class="preloader"></span>
+      </div>
+        
+
+    <div class="app">
+        <!-- <h1> Quiz </h1> -->
+        <div id="hud">
+            <div id="hud-item">
+                <p id="progressText" class="hud-prefix">
+                    Rapid Maths
+                </p>
+                <div id="progressBar">
+                    <div id="progressBarFull"></div>
+                </div>
+            </div>
+        </div>
+        <div class="quiz">
+            <h2 id="question">Question ?</h2>
+            <div id="answer-buttons">
+                <button class="btn1">Answer 1</button>
+                <button class="btn1">Answer 2</button>
+                <button class="btn1">Answer 3</button>
+                <button class="btn1">Answer 4</button>
+            </div>
+            <p id="ans-exp" style="text-align:center; margin-top: 12px;">explaination</p>
+            <button id="next-btn">Next</button>
+        </div>
+
+        <div style="width: 300px; margin: auto;">
+
+            <!-- Example 3 -->
+            <canvas id="pieChart3" style="display: none;"></canvas>
+
+        </div>
+        <p id="quote"></p>
+    </div>
+
+    <!------------------------------------------- footer starts here  -------------------------------------------------------------->
+    <!------------------------------------------- footer Ended here -------------------------------------------------------------->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script>
+        Chart.defaults.RoundedDoughnut = Chart.helpers.clone(Chart.defaults.doughnut);
+        Chart.controllers.RoundedDoughnut = Chart.controllers.doughnut.extend({
+            draw: function (ease) {
+                var ctx = this.chart.ctx;
+                var easingDecimal = ease || 1;
+                var arcs = this.getMeta().data;
+                Chart.helpers.each(arcs, function (arc, i) {
+                    arc.transition(easingDecimal).draw();
+
+                    var pArc = arcs[i === 0 ? arcs.length - 1 : i - 1];
+                    var pColor = pArc._view.backgroundColor;
+
+                    var vm = arc._view;
+                    var radius = (vm.outerRadius + vm.innerRadius) / 2;
+                    var thickness = (vm.outerRadius - vm.innerRadius) / 2;
+                    var startAngle = Math.PI - vm.startAngle - Math.PI / 2;
+                    var angle = Math.PI - vm.endAngle - Math.PI / 2;
+
+                    ctx.save();
+                    ctx.translate(vm.x, vm.y);
+
+                    ctx.fillStyle = i === 0 ? vm.backgroundColor : pColor;
+                    ctx.beginPath();
+                    ctx.arc(radius * Math.sin(startAngle), radius * Math.cos(startAngle), thickness, 0, 2 * Math.PI);
+                    ctx.fill();
+
+                    ctx.fillStyle = vm.backgroundColor;
+                    ctx.beginPath();
+                    ctx.arc(radius * Math.sin(angle), radius * Math.cos(angle), thickness, 0, 2 * Math.PI);
+                    ctx.fill();
+
+                    ctx.restore();
+                });
+            }
+        });
+
+        let questions = [];
+        const questionElement = document.getElementById("question");
+        const answerButton = document.getElementById("answer-buttons");
+        const nextButton = document.getElementById("next-btn");
+        const explaination = document.getElementById("ans-exp");
+        const scoreEle = document.getElementById("score");
+        const quote = document.getElementById("quote");
+        const progressBarFull = document.getElementById("progressBarFull");
+        const quizapp = document.querySelector(".app");
+        const loading = document.querySelector(".loading");
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let attempt = 0;
+        let category;
+
+
+        let cls =parseInt('<%- locals.Class %>');
+
+
+        function generateNum(maxVal){
+      return Math.floor(Math.random()*maxVal);
+    }
+    function selectOperator(){
+      let operators = ['+','*','-','/'];
+      return operators[Math.floor(Math.random()*4)];
+    }
+
+    //class 3
+    function generateQsn3(){
+      let num1 = generateNum(9);
+      let num2 = num1 + generateNum(10);
+      let operator = selectOperator();
+      let ans = 0
+      switch (operator) {
+        case '+':
+          ans = num1 + num2;
+          break;
+        case '*':
+          ans = num1 * num2;
+          break;
+        case '-':
+          ans = num2 - num1;
+          break;
+        case '/':
+            num2 = num1 * (Math.floor(Math.random()*10));
+          ans = num2 / num1;
+          break;
+        default:
+          break;
+      }
+      let wrong1 = ans*2;
+      let wrong2 = ans+9;
+      let wrong3 = ans-4;
+      if(ans == 0 || ans < 4){
+        wrong1 = ans+3;
+        wrong3 = ans+4;
+      }
+      return {
+              "qsn": `what is ${num2} ${operator} ${num1}`,
+              "optA": ans,
+              "optB": wrong1,
+              "optC": wrong2,
+              "optD": wrong3,
+              "correct": "A",
+              "exp" : `${num2} ${operator} ${num1} = ${ans}`
+            }
+    }
+    //class 4 and 5
+    function generateQsn4(){
+      let num1 = generateNum(100);
+      let num2 = num1 + generateNum(100);
+      let operator = selectOperator();
+      let ans = 0
+      switch (operator) {
+        case '+':
+          ans = num1 + num2;
+          break;
+        case '*':
+          ans = num1 * num2;
+          break;
+        case '-':
+          ans = num2 - num1;
+          break;
+        case '/':
+            num2 = num1 * (Math.floor(Math.random()*10));
+          ans = num2 / num1;
+          break;
+        default:
+          break;
+      }
+      let wrong1 = ans+7;
+      let wrong2 = ans*5+2;
+      let wrong3 = ans-10;
+      if(ans == 0 || ans < 10){
+        wrong3 = ans*2+1;
+      }
+      return {
+              "qsn": `what is ${num2} ${operator} ${num1}`,
+              "optA": ans,
+              "optB": wrong1,
+              "optC": wrong2,
+              "optD": wrong3,
+              "correct": "A",
+              "exp" : `${num2} ${operator} ${num1} = ${ans}`
+            }
+    }
+    //class 6 to 8
+    function generateQsn6(){
+      let num1 = generateNum(100);
+      let num2 = num1 + generateNum(1000);
+      let operator = selectOperator();
+      let ans = 0
+      switch (operator) {
+        case '+':
+          ans = num1 + num2;
+          break;
+        case '*':
+          ans = num1 * num2;
+          break;
+        case '-':
+          ans = num2 - num1;
+          break;
+        case '/':
+            num2 = num1 * (Math.floor(Math.random()*100));
+          ans = num2 / num1;
+          break;
+        default:
+          break;
+      }
+      let wrong1 = ans+7;
+      let wrong2 = ans*5+2;
+      let wrong3 = ans-10;
+      if(ans == 0 || ans < 10){
+        wrong3 = ans*2+1;
+      }
+      return {
+              "qsn": `what is ${num2} ${operator} ${num1}`,
+              "optA": ans,
+              "optB": wrong1,
+              "optC": wrong2,
+              "optD": wrong3,
+              "correct": "A",
+              "exp" : `${num2} ${operator} ${num1} = ${ans}`
+            }
+    }
+    //class 9 to 12
+    function generateQsn9(){
+      let num1 = generateNum(1000);
+      let num2 = generateNum(1000);
+      let operator = selectOperator();
+      let ans = 0
+      switch (operator) {
+        case '+':
+          ans = num1 + num2;
+          break;
+        case '*':
+          ans = num1 * num2;
+          break;
+        case '-':
+          ans = num1 - num2;
+          break;
+        case '/':
+          ans = num1 / num2;
+          break;
+        default:
+          break;
+      }
+      let wrong1 = ans+7;
+      let wrong2 = ans*5+2;
+      let wrong3 = ans-10;
+      if(ans == 0 || ans < 10){
+        wrong3 = ans*2+1;
+      }
+      return {
+              "qsn": `what is ${num1} ${operator} ${num2}`,
+              "optA": ans,
+              "optB": wrong1,
+              "optC": wrong2,
+              "optD": wrong3,
+              "correct": "A",
+              "exp" : `${num1} ${operator} ${num2} = ${ans}`
+            }
+    }
+
+    //class 1
+    function generateQsn1(){
+        let num1 = generateNum(9);
+        let num2 = num1 + generateNum(10);
+      let operators = ['+','-']
+      let operator = operators[Math.floor(Math.random()*2)];
+      let ans = 0
+      switch (operator) {
+        case '+':
+          ans = num1 + num2;
+          break;
+        case '-':
+          ans = num2 - num1;
+          break;
+        default:
+          break;
+      }
+      let wrong1 = ans+1;
+      let wrong2 = ans+2;
+      let wrong3 = ans-1;
+      if(ans == 0){
+        wrong3 = ans+3;
+      }
+      return {
+              "qsn": `what is ${num2} ${operator} ${num1}`,
+              "optA": ans,
+              "optB": wrong1,
+              "optC": wrong2,
+              "optD": wrong3,
+              "correct": "A",
+              "exp" : `${num2} ${operator} ${num1} = ${ans}`
+            }
+    }
+    //class 2
+    function generateQsn2(){
+        let num1 = generateNum(100);
+        let num2 = num1 + generateNum(100);
+      let operators = ['+','-']
+      let operator = operators[Math.floor(Math.random()*2)];
+      let ans = 0
+      switch (operator) {
+        case '+':
+          ans = num1 + num2;
+          break;
+        case '-':
+          ans = num2 - num1;
+          break;
+        default:
+          break;
+      }
+      let wrong1 = ans+6;
+      let wrong2 = ans+2;
+      let wrong3 = ans-1;
+      if(ans == 0){
+        wrong3 = ans+3;
+      }
+      return {
+              "qsn": `what is ${num2} ${operator} ${num1}`,
+              "optA": ans,
+              "optB": wrong1,
+              "optC": wrong2,
+              "optD": wrong3,
+              "correct": "A",
+              "exp" : `${num2} ${operator} ${num1} = ${ans}`
+            }
+    }
+
+
+        async function getQsns() {
+                questions = []
+                const params = new URLSearchParams(window.location.search);
+                category = params.get('category');
+
+                if(cls === 1){
+                    for(let i=0;i<10;i++){
+                        let qsn = generateQsn1();
+                        questions.push(qsn);
+                    }
+                }
+                else if(cls === 2){
+                    for(let i=0;i<10;i++){
+                        let qsn = generateQsn2();
+                        questions.push(qsn);
+                    }
+                }
+                else if(cls === 3){
+                    for(let i=0;i<10;i++){
+                        let qsn = generateQsn3();
+                        questions.push(qsn);
+                    }
+                }
+                else if(cls === 4){
+                    for(let i=0;i<10;i++){
+                        let qsn = generateQsn4();
+                        questions.push(qsn);
+                    }
+                }
+                else if(cls === 6){
+                    for(let i=0;i<10;i++){
+                        let qsn = generateQsn6();
+                        questions.push(qsn);
+                    }
+                }
+                else{
+                    for(let i=0;i<10;i++){
+                        let qsn = generateQsn9();
+                        questions.push(qsn);
+                    }
+                }
+
+                if (questions.length === 0) {
+                    quizapp.innerHTML = `<div style="text-align:center"><h4 style="text-align:center">Something went wrong</h4>
+            <a href="/">Home</a></div>`
+                    return;
+                }
+                startQuiz();
+
+            return;
+        }
+        getQsns();
+
+        function createAns(opt, correct, currentQuestion) {
+            const button = document.createElement("button");
+            button.innerHTML = opt;
+            button.classList.add("btn1");
+            answerButton.appendChild(button);
+            if (currentQuestion.correct === correct) {
+                button.dataset.correct = true
+            }
+            button.addEventListener("click", selectAnswer);
+        }
+
+        function showQuestion() {
+            resetState();
+            let currentQuestion = questions[currentQuestionIndex];
+            let questionNo = currentQuestionIndex + 1;
+            questionElement.innerHTML = `${currentQuestion.qsn}`;
+            explaination.textContent = `${currentQuestion.exp}`;
+            let randomOpt = [
+                ['A','B','C','D'],
+                ['B','D','A','C'],
+                ['D','A','B','C'],
+                ['D','B','C','A'],
+                ['B','C','A','D'],
+                ['A','B','D','C'],
+                ['A','C','D','B'],
+                ['A','D','B','C'],
+                ['C','D','A','B'],
+                ['D','C','B','A'],
+                ['C','A','D','B'],
+                ['C','B','A','D'],
+                ['B','A','D','C'],
+                ['A','D','C','B'],
+            ]
+
+            let random = randomOpt[Math.floor(1 + Math.random()*(randomOpt.length -1))];
+
+            for(i=0;i<4;i++){
+                let opt = `opt${random[i]}`;
+                createAns(currentQuestion[`${opt}`],`${random[i]}`,currentQuestion);
+            }
+            // createAns(currentQuestion.optA, 'A', currentQuestion);
+            // createAns(currentQuestion.optB, 'B', currentQuestion);
+            // createAns(currentQuestion.optC, 'C', currentQuestion);
+            // createAns(currentQuestion.optD, 'D', currentQuestion);
+
+        }
+
+        function startQuiz() {
+            // getQsns();
+            currentQuestionIndex = 0;
+            score = 0;
+            nextButton.innerHTML = "Next";
+            // explaination.textContent = "explanation"
+            quote.textContent = "";
+            progressBarFull.style.width = `0%`;
+            showQuestion();
+        }
+
+        function resetState() {
+            nextButton.style.display = "none";
+            explaination.style.display = "none";
+            attempt = 0;
+            var ctx3 = document.getElementById("pieChart3");
+            ctx3.style.display = "none";
+            while (answerButton.firstChild) {
+                answerButton.removeChild(answerButton.firstChild);
+            }
+        }
+
+        function selectAnswer(e) {
+            const selectedBtn = e.target;
+            const iscorrect = selectedBtn.dataset.correct === "true";
+            attempt++;
+            if (iscorrect) {
+                selectedBtn.classList.add("correct");
+                Array.from(answerButton.children).forEach(button => {
+                    if (button.dataset.correct === "true") {
+                        button.classList.add("correct");
+                    }
+                    button.disabled = true;
+                });
+                nextButton.style.display = "block";
+                explaination.style.display = "block";
+
+                progressBarFull.style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`;
+                if (attempt == 1) {
+                    score++;
+                    //post req -> correct++,qsnSolved++
+                    // submit(true);
+                }
+                // else{
+                //     //post req -> inCorrect++,qsnSolved++
+                //     submit(false);
+                // }
+            } else {
+                selectedBtn.classList.add("incorrect");
+            }
+        }
+
+        function showScore() {
+            resetState();
+            questionElement.innerHTML = `You Scored ${score} Out of ${questions.length}!`;
+            nextButton.innerHTML = "Next Round";
+            nextButton.style.display = "block";
+            // EXAMPLE 3
+
+            var ctx3 = document.getElementById("pieChart3");
+            ctx3.style.display = "block";
+            var pieChart3 = new Chart(ctx3, {
+                type: 'pie',
+                options: {
+                    legend: {
+                        position: 'left',
+                        labels: {
+                            boxWidth: 10,
+                            fontStyle: 'italic',
+                            fontColor: '#aaa',
+                            usePointStyle: true,
+                        }
+                    },
+                },
+                data: {
+                    labels: [
+                        "Right",
+                        "Wrong",
+                    ],
+                    datasets: [
+                        {
+                            data: [score, questions.length - score],
+                            borderWidth: 5,
+                            backgroundColor: [
+                                '#A2C5AC',
+                                "#DB6C79",
+                            ],
+                            hoverBackgroundColor: [
+                                '#A2C5AC',
+                                "#DB6C79",
+                            ]
+                        }]
+                }
+            });
+        }
+
+        function handleNextButton() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                showQuestion();
+            } else {
+                showScore();
+            }
+
+        }
+
+        nextButton.addEventListener("click", () => {
+            if (currentQuestionIndex < questions.length) {
+                handleNextButton();
+            } else {
+                // startQuiz();
+                getQsns();
+
+            }
+        })
+
+    </script>
+    <%- include('../../partials/scriptlinks.ejs') %>
+</body>
+
+</html>

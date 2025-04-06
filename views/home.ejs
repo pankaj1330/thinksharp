@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | ThinkSharp</title>
+
+    
+    <%- include('partials/headlinks.ejs') %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+<body>
+
+
+      <%- include('partials/navbar.ejs') %>
+
+      <section class="container mt-2 ">
+        <div class="row d-flex align-items-center flex-sm-row flex-column">
+          <div class="col-sm-6 col-12 text-center text-sm-start left-text wow animate__animated animate__fadeInLeft">
+            <h1>ThinkSharp</h1>
+            <!-- <p>Start your journey</p> -->
+            <p class="para1 wow animate__animated animate__fadeInLeft">Unleash the extraordinary power of your mind with 'ThinkSharp.' 🚀</p>
+            <button type="button" class="btn p-0 btnstrt wow animate__animated animate__fadeInLeft">
+              <a href="#learn" class="text-white text-decoration-none btn btn-primary">
+              Start
+              Learning</a></button>
+          </div>
+          <div class="col-sm-6 col-12 text-center right-image wow animate__animated animate__fadeInRight">
+            <img src="/images/hero.png" width="100%" alt="">
+          </div>
+        </div>
+      </section>
+    
+      <section class="container mt-2" id="learn">
+        <h1 class="text-center my-5 cathead wow animate__animated animate__fadeInUp">Flex Your Mental Muscles</h1>
+        <div class="row">
+        <% if(locals.user){ %>
+        <% if(parseInt(locals.user.classSection) >= 4 ) { %>
+          <div class="col-md-4 col-sm-6 text-center mb-3 mx-auto crd1 wow animate__animated animate__fadeInUp">
+            <div class="card shadow p-3" style="width: 100%; height: 100%; border: none">
+              <img src="/images/QnA.png" class="card-img-top mx-auto img1 wow wow wow wow animate__animated animate__fadeInUp"
+                style="width: 100%" alt="...">
+              <div class="card-body">
+                <h5 class="card-title crdh1 wow wow wow animate__animated animate__fadeInUp">Practice & Excel</h5>
+                <p class="card-text crdp1 wow wow wow animate__animated animate__fadeInUp">Harness the power of consistent practice and tailored techniques to elevate your cognitive abilities and progressive challenges.</p>
+                <a href="/categories" class="btn btn-primary mx-auto crdb1 wow wow wow animate__animated animate__fadeInUp"
+                  style="width: 30px; height: 30px; border-radius: 50%; padding: 0; display: grid; place-items: center;"><i
+                    class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <% } %>
+          <% } %>
+          <% if(!locals.user){ %>
+            <div class="col-md-4 col-sm-6 text-center mb-3 mx-auto crd1 wow animate__animated animate__fadeInUp">
+              <div class="card shadow p-3" style="width: 100%; height: 100%; border: none">
+                <img src="/images/QnA.png" class="card-img-top mx-auto img1 wow wow wow wow animate__animated animate__fadeInUp"
+                  style="width: 100%" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title crdh1 wow wow wow animate__animated animate__fadeInUp">Practice & Excel</h5>
+                  <p class="card-text crdp1 wow wow wow animate__animated animate__fadeInUp">Harness the power of consistent practice and tailored techniques to elevate your cognitive abilities and progressive challenges.</p>
+                  <a href="/categories" class="btn btn-primary mx-auto crdb1 wow wow wow animate__animated animate__fadeInUp"
+                    style="width: 30px; height: 30px; border-radius: 50%; padding: 0; display: grid; place-items: center;"><i
+                      class="fa-solid fa-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+            <% } %>
+          <div class="col-md-4 col-sm-6 text-center mb-3 mx-auto crd2 wow wow wow animate__animated animate__fadeInUp">
+            <div class="card shadow p-3" style="width: 100% ; height: 100%; border: none">
+              <img src="/images/game.png" class="card-img-top mx-auto img2 wow wow animate__animated animate__fadeInUp"
+                style="width: 100%" alt="...">
+              <div class="card-body">
+                <h5 class="card-title crdh2 wow wow animate__animated animate__fadeInUp">MindPlay</h5>
+                <p class="card-text">Welcome to MindPlay, where you'll find an array of engaging games tailored to sharpen your mind and boost mental agility.</p>
+                <a href="/games" class="btn btn-primary mx-auto crdb2 wow wow animate__animated animate__fadeInUp"
+                  style="width: 30px; height: 30px; border-radius: 50%; padding: 0; display: grid; place-items: center;"><i
+                    class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 text-center mb-3 mx-auto crd3 wow wow animate__animated animate__fadeInUp">
+            <div class="card shadow p-3" style="width: 100% ; border: none">
+              <img src="/images/medispot.png" class="card-img-top mx-auto img2 wow wow animate__animated animate__fadeInUp"
+                style="width: 100%" alt="...">
+              <div class="card-body">
+                <h5 class="card-title crdh3 wow wow animate__animated animate__fadeInUp">MediSpot</h5>
+                <p class="card-text">
+                  Find serenity through tranquil melodies, soothing tunes, and mindful rituals, nurturing your soul and quieting your mind in a blissful embrace.</p>
+                <a href="/mediSpot" class="btn btn-primary mx-auto crdb3 wow wow animate__animated animate__fadeInUp"
+                  style="width: 30px; height: 30px; border-radius: 50%; padding: 0; display: grid; place-items: center;"><i
+                    class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center my-4 fw-bolder p-3">
+          <!-- <h2 class="mb-3">Coming Soon</h2> -->
+          <a href="/coming-soon" class="btn border border-black border-2 mx-auto wow animate__animated animate__fadeInUp" style="color: red;">Surprise 🎉</a>
+        </div>
+      </section>
+    
+    
+    
+      <!-- Pricing 2 section -->
+      <% if(locals.user){ %>
+        <% if(!(locals.user.subscribed)) { %>
+      <section class="bsb-pricing-1 bg-light py-3 py-md-5 py-xl-8" id="pay-section">
+        <div class="container">
+          <div class="row gy-5 gy-lg-0 align-items-center justify-content-around">
+            <div class="col-12 text-center">
+              <h2 class="display-5 mb-3 mb-xl-4 wow animate__animated animate__fadeInUp">Our Pricing</h2>
+            </div>
+            <div class="col-12 col-sm-8 col-lg-4">
+              <div class="row justify-content-xl-end">
+                <div class="col-12 col-xl-11">
+                  <div class="row gy-4 gy-md-0 gx-xxl-5">
+    
+                    <div class="col-12">
+                      <div class="card border-0 border-bottom border-primary shadow-lg pt-md-4 pb-md-4 bsb-pricing-popular">
+                        <div class="card-body p-4 p-xxl-5 wow animate__animated animate__fadeInLeft">
+                          <h2 class="h4 mb-2 wow animate__animated animate__fadeInLeft">Pro</h2>
+                          <h4 class="display-3 fw-bold text-primary mb-0 wow animate__animated animate__fadeInLeft">₹999</h4>
+                          <p class="text-secondary mb-4 wow animate__animated animate__fadeInLeft">INR /annum</p>
+                          <ul class="list-group list-group-flush mb-4">
+                            <li class="list-group-item">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-check animate__animated animate__fadeInLeft" viewBox="0 0 16 16">
+                                <path
+                                  d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                              </svg>
+                              <span class="wow animate__animated animate__fadeInLeft"><span><strong>All Categories Of Practice & Excel</strong></span>
+                            </li>
+                            <li class="list-group-item">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-check wow wow animate__animated animate__fadeInLeft" viewBox="0 0 16 16">
+                                <path
+                                  d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                              </svg>
+                              <span class="wow wow animate__animated animate__fadeInLeft"><span><strong>MindPlay Full Access(5+ Games)</strong></span>
+                            </li>
+                            <li class="list-group-item">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-check wow wow animate__animated animate__fadeInLeft" viewBox="0 0 16 16">
+                                <path
+                                  d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                              </svg>
+                              <span class="wow animate__animated animate__fadeInLeft"><span><strong>MediSpot Full Access</strong></span>
+                            </li>
+                            <li class="list-group-item">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-check wow animate__animated animate__fadeInLeft" viewBox="0 0 16 16">
+                                <path
+                                  d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                              </svg>
+                              <span class="wow animate__animated animate__fadeInLeft"><span><strong>FlashCards Full Access</strong></span>
+                            </li>
+                            <li class="list-group-item">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-check wow animate__animated animate__fadeInLeft" viewBox="0 0 16 16">
+                                <path
+                                  d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                              </svg>
+                              <span class="wow animate__animated animate__fadeInLeft"><span><strong>Full Support</strong></span>
+                            </li>
+                          </ul>
+                          <button class="btn btn-primary"><a href="https://docs.google.com/forms/d/e/1FAIpQLSekbPwRirInJCK7dMMwjTGz9KYwBelrUyGzEFt8zFuYff0_nw/viewform?usp=send_form" class="text-white text-decoration-none">Pay</a></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <% } %>
+      <% } %>
+      <!-- Pricing 2 section ends -->
+    
+    <% if(!locals.user) { %>
+
+      <section class="bsb-pricing-1 bg-light py-3 py-md-5 py-xl-8" id="pay-section">
+        <div class="container">
+          <div class="row gy-5 gy-lg-0 align-items-center justify-content-around">
+            <div class="col-12 text-center">
+              <h2 class="display-5 mb-3 mb-xl-4 wow animate__animated animate__fadeInUp">Our Pricing</h2>
+            </div>
+            <div class="col-12 col-sm-8 col-lg-4">
+              <div class="row justify-content-xl-end">
+                <div class="col-12 col-xl-11">
+                  <div class="row gy-4 gy-md-0 gx-xxl-5">
+    
+                    <div class="col-12">
+                      <div class="card border-0 border-bottom border-primary shadow-lg pt-md-4 pb-md-4 bsb-pricing-popular">
+                        <div class="card-body p-4 p-xxl-5 wow animate__animated animate__fadeInLeft">
+                          <h2 class="h4 mb-2 wow animate__animated animate__fadeInLeft">Pro</h2>
+                          <h4 class="display-3 fw-bold text-primary mb-0 wow animate__animated animate__fadeInLeft">₹999</h4>
+                          <p class="text-secondary mb-4 wow animate__animated animate__fadeInLeft">INR /annum</p>
+                          <ul class="list-group list-group-flush mb-4">
+                            <li class="list-group-item">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-check animate__animated animate__fadeInLeft" viewBox="0 0 16 16">
+                                <path
+                                  d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                              </svg>
+                              <span class="wow animate__animated animate__fadeInLeft"><span><strong>All Categories Of Practice & Excel</strong></span>
+                            </li>
+                            <li class="list-group-item">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-check wow wow animate__animated animate__fadeInLeft" viewBox="0 0 16 16">
+                                <path
+                                  d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                              </svg>
+                              <span class="wow wow animate__animated animate__fadeInLeft"><span><strong>MindPlay Full Access(5+ Games)</strong></span>
+                            </li>
+                            <li class="list-group-item">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-check wow wow animate__animated animate__fadeInLeft" viewBox="0 0 16 16">
+                                <path
+                                  d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                              </svg>
+                              <span class="wow animate__animated animate__fadeInLeft"><span><strong>MediSpot Full Access</strong></span>
+                            </li>
+                            <li class="list-group-item">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-check wow animate__animated animate__fadeInLeft" viewBox="0 0 16 16">
+                                <path
+                                  d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                              </svg>
+                              <span class="wow animate__animated animate__fadeInLeft"><span><strong>FlashCards Full Access</strong></span>
+                            </li>
+                            <li class="list-group-item">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-check wow animate__animated animate__fadeInLeft" viewBox="0 0 16 16">
+                                <path
+                                  d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+                              </svg>
+                              <span class="wow animate__animated animate__fadeInLeft"><span><strong>Full Support</strong></span>
+                            </li>
+                          </ul>
+                          <button class="btn btn-primary"><a class="text-white text-decoration-none" href="/login">Pay</a></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container py-5">
+        <div class="row d-flex align-items-center flex-sm-row flex-column">
+          <div class="col-sm-6 col-12 text-center wow animate__animated animate__fadeInLeft">
+            <img src="/images/signiup.png" width="100%" alt="">
+          </div>
+          <div class="col-sm-6 col-12 text-center text-sm-start">
+            <h1 class="wow animate__animated animate__fadeInRight">Ready to elevate your learning experience?</h1>
+            <p class="wow animate__animated animate__fadeInRight">Join us at 'ThinkSharp' and experience the power of a sharp
+              mind.</p>
+            <button type="button" class="btn btn-primary wow animate__animated animate__fadeInRight"><a href="/signup" class="text-white text-decoration-none">Sign up</a></button>
+          </div>
+        </div>
+      </section>
+      <% } %>
+    
+      <section class="container wow animate__animated animate__fadeInRight">
+        <h1 class="text-center my-5 wow wow wow animate__animated animate__fadeInUp">Why "ThinkSharp" can be helpful to you?</h1>
+        <div class="row">
+          <div class="col-lg-6 col-12 wow animate__animated animate__fadeInLeft">
+            <div class="card mb-3 mx-auto shadow p-4 border-0 wow wow wow animate__animated animate__fadeInLeft"
+              style="max-width: 540px;background: #ffc55a;">
+              <div class="row g-0 d-flex align-items-center">
+                <div class="col-sm-4 col-6 mx-auto">
+                  <img src="/images/1.png" class="img-fluid rounded-start wow wow wow animate__animated animate__fadeInLeft"
+                    alt="...">
+                </div>
+                <div class="col-sm-8">
+                  <div class="card-body">
+                    <h5 class="card-title wow wow animate__animated animate__fadeInLeft">Evaluate</h5>
+                    <p class="card-text wow wow animate__animated animate__fadeInLeft">Gain valuable insights into your strengths and weak areas for improvement through regular assessments.</p>
+    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-12 wow animate__animated animate__fadeInRight">
+            <div class="card mb-3 mx-auto shadow p-4 border-0 wow animate__animated animate__fadeInRight"
+              style="max-width: 540px;background: #91e1ff;">
+              <div class="row g-0 d-flex align-items-center">
+                <div class="col-sm-4 col-6 mx-auto">
+                  <img src="/images/2.png" class="img-fluid rounded-start wow animate__animated animate__fadeInRight" alt="...">
+                </div>
+                <div class="col-sm-8">
+                  <div class="card-body"> 
+                    <h5 class="card-title wow animate__animated animate__fadeInRight">Learn</h5>
+                    <p class="card-text wow animate__animated animate__fadeInRight">Discover the power of your mind through our comprehensive learning materials to enhance focus and attention.</p>
+                    
+    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-12 wow animate__animated animate__fadeInLeft">
+            <div class="card mb-3 mx-auto shadow p-4 border-0 wow wow wow wow wow wow animate__animated animate__fadeInLeft"
+              style="max-width: 540px;background: #abff9c;">
+              <div class="row g-0 d-flex align-items-center">
+                <div class="col-sm-4 col-6 mx-auto">
+                  <img src="/images/3.png" class="img-fluid rounded-start wow wow wow wow wow wow animate__animated animate__fadeInLeft"
+                    alt="...">
+                </div>
+                <div class="col-sm-8">
+                  <div class="card-body">
+                    <h5 class="card-title wow wow wow wow wow wow animate__animated animate__fadeInLeft">Mastery</h5>
+                    <p class="card-text wow wow wow wow wow wow animate__animated animate__fadeInLeft">Elevate your thinking and reach new heights of mental agility through dedicated practice and perseverance.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-12 wow animate__animated animate__fadeInRight">
+            <div class="card mb-3 mx-auto shadow p-4 border-0 wow wow wow wow wow animate__animated animate__fadeInRight"
+              style="max-width: 540px;background: #d2c5f6;">
+              <div class="row g-0 d-flex align-items-center">
+                <div class="col-sm-4 col-6 mx-auto">
+                  <img src="/images/4.png" class="img-fluid rounded-start wow wow wow wow wow animate__animated animate__fadeInRight" alt="...">
+                </div>
+                <div class="col-sm-8">
+                  <div class="card-body">
+                    <h5 class="card-title wow wow wow wow wow animate__animated animate__fadeInRight">Discovery</h5>
+                    <p class="card-text wow wow wow wow wow animate__animated animate__fadeInRight">Unlock the door to endless possibilities as you embrace the thrill of discovery on your path to a sharper mind.</p>
+    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+      <section class="container">
+        <h1 class="text-center my-5 wow wow wow wow animate__animated animate__fadeInUp">FAQ's</h1>
+        <div class="accordion mx-auto" style="max-width: 1250px;" id="accordionExample">
+          <div class="accordion-item wow wow wow wow animate__animated animate__fadeInLeft">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne">
+                <strong class="wow wow wow wow animate__animated animate__fadeInLeft">What is ThinkSharp?</strong>
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <ul>
+                  <li class="wow wow wow wow animate__animated animate__fadeInLeft">ThinkSharp is a brain training app designed to improve cognitive abilities through a variety of engaging exercises and activities.</li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="wow accordion-item animate__animated animate__fadeInLeft">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <strong>How does ThinkSharp work?</strong>
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <ul>
+                  <li>ThinkSharp offers a collection of scientifically designed brain training exercises that target different cognitive skills such as memory, attention, problem-solving, and more. Users can engage in these exercises regularly to challenge their minds and enhance their cognitive abilities.
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item wow wow wow animate__animated animate__fadeInLeft">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <strong>Who can benefit from using ThinkSharp?</strong>
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <ul>
+                  <li>ThinkSharp is suitable for individuals of all ages who wish to enhance their cognitive abilities, improve memory, sharpen focus, and boost mental agility.</li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item wow wow animate__animated animate__fadeInLeft">
+            <h2 class="accordion-header" id="headingFour">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                <strong>Is ThinkSharp suitable for all age groups?</strong>
+              </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <ul>
+                  <li>
+                    Yes, ThinkSharp offers exercises and activities tailored to different age groups, ensuring that users of all ages can find suitable challenges to improve their cognitive skills.
+                  </li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item wow animate__animated animate__fadeInLeft">
+            <h2 class="accordion-header" id="headingFive">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                <strong>What types of brain training exercises are available on ThinkSharp?</strong>
+              </button>
+            </h2>
+            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <ul>
+                  <li>ThinkSharp offers a wide range of exercises, including memory enhancement techniques, attention and focus tasks, cognitive puzzles, rapid mental calculations, emotional intelligence exercises, and more.
+
+                  </li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item wow animate__animated animate__fadeInLeft">
+            <h2 class="accordion-header" id="headingSix">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                <strong>Can you customize the training sessions based on personal preferences?</strong>
+              </button>
+            </h2>
+            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <ul>
+    
+                  <li>Yes, ThinkSharp allows users to customize their training sessions by selecting specific exercises, adjusting difficulty levels, and tracking progress over time.</li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item wow animate__animated animate__fadeInLeft">
+            <h2 class="accordion-header" id="headingSeven">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                <strong>Are there different difficulty levels for the exercises?</strong>
+              </button>
+            </h2>
+            <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <ul>
+                  <li>Yes, ThinkSharp provides exercises with varying difficulty levels to cater to users of different skill levels, from beginners to advanced learners.</li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item wow animate__animated animate__fadeInLeft">
+            <h2 class="accordion-header" id="headingEight">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                <strong>Do you provide progress tracking and performance analytics?</strong>
+              </button>
+            </h2>
+            <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <ul>
+                  <li>Yes, ThinkSharp offers progress tracking and performance analytics tools that allow users to monitor their improvement over time and identify areas for further development.</li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item wow animate__animated animate__fadeInLeft">
+            <h2 class="accordion-header" id="headingNine">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                <strong>Is ThinkSharp available on multiple platforms (e.g., web, mobile)?</strong>
+              </button>
+            </h2>
+            <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <ul>
+                  <li>Yes, ThinkSharp is available on both web and mobile platforms, allowing users to access the app from their desktop computers, smartphones, or tablets.</li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item wow animate__animated animate__fadeInLeft">
+            <h2 class="accordion-header" id="headingTen">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                <strong>  Which devices and operating systems support ThinkSharp?</strong>
+              </button>
+            </h2>
+            <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <ul>
+                  <li>ThinkSharp is compatible with a wide range of devices and operating systems, including iOS, Android, and web browsers such as Chrome, Firefox, and Safari.</li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-4">
+            <a class="btn btn-primary text-primary text-decoration-none bg-transparent border-1" href="/faq">More FAQs</a>
+          </div>
+        </div>
+      </section>
+    
+    
+      <div class="container my-5">
+        <h1 class="text-center my-5 wow animate__animated animate__fadeInUp">Contact Us</h1>
+        <div class="row justify-content-center">
+          <div class="col-md-10">
+    
+    
+            <div class="row justify-content-center">
+              <div class="col-md-6">
+    
+                <h3 class="heading mb-4 wow animate__animated animate__fadeInLeft" style="font-size: 40px; font-weight: bold;">
+                  Let's talk about everything!</h3>
+                <p class="wow animate__animated animate__fadeInLeft">Enhance Your Mental Fitness with Customized Support.
+                  </p>
+    
+                <p><img src="/images/cont.png" alt="Image" class="img-fluid wow wow animate__animated animate__fadeInLeft" style="
+                      max-width: 100%;
+                  "></p>
+    
+    
+              </div>
+              <div class="col-md-6">
+    
+                <form class="mb-5 contact-form" id="form">
+                  <div class="row mb-4">
+                    <div class="col-md-12 form-group wow animate__animated animate__fadeInRight">
+                      <input type="text" class="form-control p-3 border-0"
+                        style="background-color: rgba(128, 128, 128, 0.085);" name="name" id="name" placeholder="Your name">
+                    </div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col-md-12 form-group wow animate__animated animate__fadeInRight">
+                      <input type="text" class="form-control p-3 border-0"
+                        style="background-color: rgba(128, 128, 128, 0.085);" name="email" id="email" placeholder="Email">
+                    </div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col-md-12 form-group wow animate__animated animate__fadeInRight">
+                      <input type="text" class="form-control p-3 border-0"
+                        style="background-color: rgba(128, 128, 128, 0.085);" name="subject" id="subject"
+                        placeholder="Subject">
+                    </div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col-md-12 form-group wow animate__animated animate__fadeInRight">
+                      <textarea class="form-control p-3 border-0" style="background-color: rgba(128, 128, 128, 0.085);"
+                        name="message" id="message" cols="30" rows="7" placeholder="Write your message"></textarea>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <input type="submit" value="Send Message" id="email-button"
+                        class="btn rounded-1 py-2 px-4 btn-dark fs-6 wow animate__animated animate__fadeInRight">
+                      <span class="submitting"></span>
+                    </div>
+                  </div>
+                </form>
+    
+                <div id="form-message-warning mt-4"></div>
+                <!-- <div id="form-message-success">
+                  Your message was sent, thank you!
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <%- include('partials/footer.ejs') %>
+
+      <%- include('partials/scriptlinks.ejs') %>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+      <script>
+      new WOW().init();
+      </script>
+
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+<script type="text/javascript"
+src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script type="text/javascript">
+emailjs.init('NhDU00aDt5Iqdb8Bg')
+</script>
+
+<script>
+
+const btn = document.getElementById('email-button');
+
+  document.getElementById('form')
+ .addEventListener('submit', function(event) {
+   event.preventDefault();
+
+   btn.value = 'Sending...';
+
+   const serviceID = 'service_fxopcja';
+   const templateID = 'template_o730x4o';
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+      btn.value = 'Send Email';
+      alert('Sent!');
+    }, (err) => {
+      btn.value = 'Send Email';
+      alert(JSON.stringify(err));
+    });
+});
+
+      </script>
+    
+
+
+            
+
+    </body>
+    
+    </html>

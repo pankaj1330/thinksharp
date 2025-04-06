@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify</title>
+    <link rel="icon" type="image/x-icon" href="/tsTitle.png">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+</head>
+
+<body>
+    <% if(locals.error) { %>
+        <div class="error" style="max-width: 1400px; margin: auto; padding: 8px; text-align: center;">
+            <p>
+                <%= locals.error %>
+            </p>
+        </div>
+        <% } %>
+            <section class="container">
+                <div class="row mx-auto mt-4">
+                    <form class="col-12 text-center mt-4" action="/verifyopt" method="POST">
+                        <input class="form-control text-center form-control-sm mx-auto" type="password" name="otp"
+                            placeholder="Enter OTP" aria-label=".form-control-sm example" style="max-width: 200px;">
+                        <div id="timer">00:59</div>
+                        <input type="submit" class="btn btn-primary mt-2" value="Verify">
+                    </form>
+                </div>
+            </section>
+
+            <script>
+                let timeLeft = 59;
+
+                function updateTimer() {
+                    document.getElementById('timer').textContent = `00:${timeLeft}`;
+
+                    timeLeft--;
+
+                    if (timeLeft < 0) {
+                        clearInterval(timerInterval);
+                        document.getElementById('timer').textContent = "00:00";
+                    }
+                }
+                const timerInterval = setInterval(updateTimer, 1000);
+            </script>
+</body>
+
+</html>

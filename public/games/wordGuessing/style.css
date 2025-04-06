@@ -1,0 +1,262 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  /* background-image: url(Untitled1.png); */
+  /* width: 100vw; */
+  background-color: #5563a9;
+
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+
+
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 650px;
+}
+
+.wrapper {
+  position: absolute;
+  width: 90%;
+  max-width: 37em;
+  background-color: #bec5ef59;
+  padding: 2em 0em;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 55%;
+  left: 50%;
+  text-align: center;
+  border-radius: 1em;
+  padding-bottom: 0px;
+}
+
+.controls-container {
+  /* background-image: url(Untitled1.png); */
+  background-color: #5563a9;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+#start {
+  font-size: 1.2em;
+  padding: 1em 2em;
+  background-color: #f9882e;
+  border: none;
+  outline: none;
+  border-radius: 2em;
+  cursor: pointer;
+}
+
+#letter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8em 1em;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+#letter-container button {
+  background-color: #ffffff;
+
+  color: #050a33;
+  outline: none;
+  border-radius: 0.3em;
+  cursor: pointer;
+  height: 2em;
+  width: 2.5em;
+}
+
+#letter-container .correct {
+  background-color: #008000;
+  color: #ffffff;
+  border: 2px solid #008000;
+}
+
+#letter-container .incorrect {
+  background-color: #8a8686;
+  color: #ffffff;
+  border: 2px solid #8a8686;
+}
+
+.hint-ref {
+  margin-bottom: 1em;
+  color: white;
+}
+
+.hint-ref span {
+  font-weight: 600;
+  color: black;
+}
+
+#chanceCount {
+  margin: 1em 0;
+  position: absolute;
+  top: 1.5em;
+  right: 1em;
+  font-size: smaller;
+  color: #f9882e;
+}
+
+#word {
+  font-weight: 600;
+  margin: 1em 0 2em 0;
+}
+
+#word span {
+  text-transform: uppercase;
+  font-weight: 400;
+  color: #ffffff;
+
+}
+
+.hide {
+  display: none;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24
+}
+
+#result img {
+  width: 100px;
+}
+
+#result {
+  text-align: center;
+}
+
+.wrapper .next-btn-div {
+  text-align: center;
+}
+
+#next-qsn {
+  padding: 4px 8px;
+  margin-top: 16px;
+  background-color: #f9882e;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#show-model {
+  border: none;
+  text-decoration: underline;
+  color: blue;
+  background-color: transparent;
+  font-weight: 600;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+.container-model-main {
+  width: 100%;
+  min-height: 100vh;
+  /* background-color: white; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.hide {
+  display: none;
+}
+
+.container-model {
+  max-width: 600px;
+  margin: 32px auto;
+  border-radius: 16px;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 4px 4px 20px rgb(117, 117, 117);
+
+}
+
+.header-section-model {
+  position: relative;
+  text-align: center;
+  background: #f0f0f0;
+  padding: 20px;
+}
+
+.header-img {
+  max-width: 100%;
+  height: auto;
+}
+
+.main-content-model {
+  padding: 20px;
+}
+
+h1,
+h2,
+p {
+  margin-bottom: 10px;
+}
+
+.close-btn-model {
+  font-size: 16px;
+  display: inline-block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #f9882e;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.close-btn-model:hover {
+  background-color: #258cd1;
+}
+
+@media (max-width: 600px) {
+  .header-section-model {
+    padding: 10px;
+  }
+
+  .main-content-model {
+    padding: 10px;
+  }
+}
+
+
+.title-container {
+  width: 100%;
+  padding: 20px 20px;
+
+  border-bottom: 1px solid rgb(255, 255, 255, 0.45);
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 400;
+  color: #FFF;
+}

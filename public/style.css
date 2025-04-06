@@ -1,0 +1,81 @@
+*{
+  font-family: 'Poppins',sans-serif;
+}
+i{
+  font-family: "Font Awesome 6 Brands";
+}
+.logout-model{
+    max-width: 300px;
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: white;
+    box-shadow: 2px 0 8px rgb(197, 197, 197);
+    padding: 16px;
+    border-radius: 6px;
+    text-align: center;
+    color: black;
+}
+.logout-model div button,.logout-model div a{
+    font-size: 18px;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+.logout-model div button{
+    background-color: red;
+    color: white;
+    border: none;
+}
+.logout-model div a{
+    color: red;
+    background-color: white;
+    text-decoration: none;
+}
+.hide-logout{
+    display: none;
+}
+
+
+/* footer styles */
+
+.footer_menu ul{
+    list-style: none;
+  }
+  .footer_menu ul li{
+    margin: 12px 0;
+    padding: 0;
+  }
+  .footer_menu li a{
+    color: grey;
+    text-decoration: none;
+  }
+  .footer_menu li a:hover{
+    color: blue;
+    text-decoration: underline;
+  }
+  .footer_social_area {
+position: relative;
+z-index: 1;
+}
+.footer_social_area a {
+border-radius: 50%;
+height: 40px;
+text-align: center;
+width: 40px;
+display: inline-block;
+background-color: #f5f5ff;
+line-height: 40px;
+-webkit-box-shadow: none;
+box-shadow: none;
+margin-right: 10px;
+}
+  .footer_social_area a i {
+line-height: 36px;
+}
+.footer_social_area a:hover,
+.footer_social_area a:focus {
+color: #ffffff;
+}

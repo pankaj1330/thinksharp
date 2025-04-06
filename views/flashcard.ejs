@@ -1,0 +1,396 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>FlashCards</title>
+    <%- include('partials/headlinks.ejs') %>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        @import url(https://fonts.googleapis.com/css?family=Calibri:400,300,700);
+
+        body {
+            font-family: 'Calibri', sans-serif !important;
+        }
+
+        .mt-100 {
+
+            margin-top: 100px;
+
+        }
+
+        .modal-button {
+            background-color: rgb(29, 226, 226);
+            border-color: rgb(29, 226, 226);
+            border-radius: 6px;
+            color: white;
+            font-size: 17px;
+            padding-right: 76px;
+            padding-left: 76px;
+        }
+
+        .card {
+            border-radius: 3vh;
+            margin: auto;
+            max-width: 380px;
+            padding: 7vh 6vh;
+            align-items: center;
+            box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .card-1 {
+            border-radius: 3vh;
+            margin: auto;
+            width: 325px;
+            margin: 10px;
+            min-height: 320px;
+            padding: 10px;
+            align-items: center;
+            box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+
+
+
+
+
+        @media(max-width: 320px) {
+            .card-1 {
+                width: 75%;
+            }
+        }
+
+        .card-img {
+            padding: 20px 0;
+            width: 40%;
+        }
+
+        .card-img img {
+            opacity: 0.7;
+        }
+
+        .card-title {
+            margin-bottom: unset;
+        }
+
+        .card-title p {
+            color: rgb(29, 226, 226);
+            font-weight: 900;
+            font-size: 22px;
+            margin-left: 7px;
+            margin-bottom: unset;
+        }
+
+        .card-text p {
+            color: grey;
+            font-size: 25px;
+            text-align: center;
+            padding: 3vh 0;
+            font-weight: lighter;
+        }
+
+        .btn {
+            width: 100%;
+            background-color: rgb(29, 226, 226);
+            border-color: rgb(29, 226, 226);
+            border-radius: 25px;
+            color: white;
+            font-size: 20px;
+        }
+
+        .btn:focus {
+            box-shadow: none;
+            outline: none;
+            box-shadow: none;
+            color: white;
+            -webkit-box-shadow: none;
+            --webkit-user-select: none;
+            transition: none;
+        }
+
+        .btn:hover {
+            color: white;
+        }
+
+
+
+
+
+        @media(max-width:767px) {
+            .card {
+                width: 90vw;
+            }
+        }
+
+        .card-img {
+            padding: 20px 0;
+            width: 40%;
+        }
+
+        .card-img img {
+            opacity: 0.7;
+        }
+
+        .card-title {
+            margin-bottom: unset;
+        }
+
+        .card-title p {
+            color: rgb(29, 226, 226);
+            font-weight: 900;
+            font-size: 26px;
+            margin-left: 7px;
+            margin-bottom: unset;
+        }
+
+        .card-text p {
+            color: grey;
+            font-size: 25px;
+            text-align: center;
+            padding: 3vh 0;
+            font-weight: lighter;
+        }
+
+        .btn {
+            width: 100%;
+            background-color: rgb(29, 226, 226);
+            border-color: rgb(29, 226, 226);
+            border-radius: 25px;
+            color: white;
+            font-size: 20px;
+        }
+
+
+
+        .btn:focus {
+            box-shadow: none;
+            outline: none;
+            box-shadow: none;
+            color: white;
+            -webkit-box-shadow: none;
+            --webkit-user-select: none;
+            transition: none;
+        }
+
+        .btn:hover {
+            color: white;
+        }
+
+        .loading{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+.hide{
+    display: none;
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    margin: auto;
+    position: relative;
+  }
+  .loader:before {
+      content: '';
+      width: 48px;
+      height: 5px;
+      background: #000;
+      opacity: 0.25;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      border-radius: 50%;
+      animation: shadow 0.5s linear infinite;
+    }
+    .loader:after {
+      content: '';
+      width: 48px;
+      height: 48px;
+      background: #ff9b9b;
+      animation: bxSpin 0.5s linear infinite;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 4px;
+    }
+  @keyframes bxSpin {
+    17% {
+      border-bottom-right-radius: 3px;
+    }
+    25% {
+      transform: translateY(9px) rotate(22.5deg);
+    }
+    50% {
+      transform: translateY(18px) scale(1, .9) rotate(45deg);
+      border-bottom-right-radius: 40px;
+    }
+    75% {
+      transform: translateY(9px) rotate(67.5deg);
+    }
+    100% {
+      transform: translateY(0) rotate(90deg);
+    }
+  }
+
+  @keyframes shadow {
+    0%, 100% {
+      transform: scale(1, 1);
+    }
+    50% {
+      transform: scale(1.2, 1);
+    }
+  }
+    </style>
+</head>
+
+<body>
+
+    <!-- <h1 class="head">Flashcards</h1>
+    <h3 class="subhead">Boost your brainpower!!</h3> -->
+    <%- include('partials/navbar.ejs') %>
+
+    <h4 class="text-center mt-5 fw-bolder" style="color: #1de2e2;">"Access Two New FlashCards Each Day"</h4>
+    <div class="container mt-4 mb-4">
+        <div class="row d-flex flex-row justify-content-center flash-cards" style="justify-content: center;">
+            <!-- technique title card  -->
+            <div class="card-1">
+                <div class="card-img">
+                    <img class="img-fluid" src="./images/1 (1).png">
+                </div>
+                <div class="card-title">
+                    <p>Memory Palace Technique</p>
+                </div>
+                <div class="col-md-6"> <button type="button" class="btn" data-toggle="modal"
+                        data-target="#myModal1">learn</button> </div>
+            </div>
+
+            <!-- technique title card  -->
+
+        </div>
+    </div>
+
+    <!-- <div class="row" style="justify-content: center;">
+        <div class="card-1" style="display: grid; place-items: center; background-color: rgba(29, 226, 226, 0.496);">
+            <div class="lock">
+                <i class="fa-solid fa-lock" style="font-size: 64px; color: rgb(60, 60, 60);"></i>
+            </div>
+        </div>
+    </div> -->
+
+
+    <!-- technique content modal  -->
+
+    
+    <div class="modal fade" id="myModal6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog flashcardinfo">
+            <div class="card">
+                <div class="card-img">
+                    <img class="img-fluid" src="./images/1 (6).png">
+                </div>
+                <div class="card-title">
+                    <p>This Technique says:</p>
+                </div>
+                <div class="card-text">
+                    <p>"Review information at increasing intervals. This strengthens long-term memory. Ideal for
+                        learning new facts or languages. Example: Revisit FlashCards at intervals - 1 day, 3 days, 1
+                        week, etc."</p>
+                </div>
+                <button class="btn">Got it!</button>
+            </div>
+        </div>
+    </div>
+    <%- include('partials/footer.ejs') %>
+    <!-- technique content modal  -->
+
+
+
+    <script>
+        const flashCard = document.querySelector('.flash-cards');
+        let flashcards = {}
+        async function getFlashcards() {
+            const resp = await fetch(`${window.location.origin}/flashcardData`);
+            flashcards = await resp.json();
+            flashcards2 = [ ...flashcards ]
+            flashcards2 = flashcards2.reverse()
+            let flashcardHTML = flashcards2.map((card, index) => {
+                let cardNo = parseInt(card.cardNo)
+                let imgNo = ((cardNo) % 89);
+                return `<div class="card-1 position-relative">
+                        <div class="card-img mx-auto">
+                            <img class="img-fluid" src="./flashcardImage/(${imgNo}).png">
+                        </div>
+                        <div class="card-title text-center">
+                            <p>${card.cardTitle}</p>
+                        </div>
+                        <div class="col-md-6 position-absolute bottom-0 mb-2 start-50 translate-middle-x">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal6" onclick="showflashcard(${cardNo})">
+                    Launch
+                  </button>
+                  </div>
+                  </div>
+                         `
+            }).join("");
+            for (let i = (flashcards.length); i <= 760; i++) {
+                flashcardHTML = flashcardHTML + `<div class="card-1" style="display: grid; place-items: center; background-color: rgba(29, 226, 226, 0.496);">
+                        <div class="lock">
+                            <i class="fa-solid fa-lock" style="font-size: 64px; color: rgb(60, 60, 60);"></i>
+                        </div>
+                    </div>`
+            }
+            flashCard.innerHTML = flashcardHTML;
+        }
+
+        function showflashcard(index) {
+            let imgNo = ((index) % 89);
+            console.log(index);
+            // flashcards[index];
+            let descHtml = `<div class="card">
+                <div class="card-img">
+                    <img class="img-fluid" src="./flashcardImage/(${imgNo}).png">
+                </div>
+                <div class="card-title">
+                    <p style="text-align:center">${flashcards[index].cardTitle}</p>
+                </div>
+                <div class="card-text">
+                    <p>"${flashcards[index].cardDesc}"</p>
+                </div>
+                <button class="btn">Got it!</button>
+            </div>`
+            document.querySelector('.flashcardinfo').innerHTML = descHtml;
+        }
+        getFlashcards();
+    </script>
+
+<%- include('partials/scriptlinks.ejs') %>
+
+
+</body>
+
+</html>

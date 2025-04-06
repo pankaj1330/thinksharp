@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <%- include('../partials/headlinks.ejs') %>
+    <style>
+        .img-fluid {
+            max-width: 80%;
+            height: auto;
+        }
+        /* .aboutus-container{
+            min-height: 100vh;
+            background: url('/tsLogo.png');
+            background-size:50%;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: black;
+            position: relative;
+            z-index: 10;
+        }
+        .aboutus-container::after{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.344);
+            z-index: -1;
+        } */
+    </style>
+</head>
+
+<body>
+    <%- include('../partials/navbar.ejs') %>
+
+
+    <!-- ----------------------------------------------------------------------------------category section---------------------------------------------------- -->
+
+
+    
+
+    <!-- About 1 - Bootstrap Brain Component -->
+    <section class="py-3 py-md-5" style="min-height: 100vh; text-align: justify;">
+        <div class="container aboutus-container">
+                        <div class="col-12 col-xl-11" style="text-align: justify;">
+                            <h2 class="mb-3">About Us:</h2>
+                            <p class="mb-3">Welcome to ThinkSharp, where we're dedicated to
+                                sharpening minds and nurturing cognitive wellness. At ThinkSharp, we're firm believers
+                                in the power of brain training to unlock human potential and enhance mental agility.</p>
+                            <p class="mb-3">Our mission is to empower individuals of all ages
+                                to challenge their minds and embark on a journey of continuous learning and growth. With
+                                a blend of engaging games, thought-provoking puzzles, and enriching cognitive exercises,
+                                ThinkSharp offers a holistic approach to brain fitness.
+                            </p>
+                            <p class="mb-3">Driven by a passion for innovation and backed by
+                                insights from cognitive research, we strive to make brain training accessible to
+                                everyone. Through our commitment to excellence, we aim to inspire lifelong curiosity and
+                                intellectual vitality.
+                            </p>
+                            <p class="mb-3">Join us on this exciting adventure as we harness
+                                the limitless potential of the human mind. Together, let's ThinkSharp and unlock new
+                                levels of mental prowess, creativity, and cognitive well-being.
+                            </p>
+
+                        </div>
+
+                        <div class="about-img text-center">
+                            <img src="/tsLogo.png" class="w-50" alt="about us image">
+                        </div>                  
+        </div>
+        </div>
+    </section>
+
+
+
+    <%- include('../partials/footer.ejs') %>
+
+    <%- include('../partials/scriptlinks.ejs') %>
+</body>
+
+</html>

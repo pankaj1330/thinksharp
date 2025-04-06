@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referrals | ThinkSharp</title>
+    <link rel="icon" type="image/x-icon" href="/tsTitle.png">
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+</head>
+<body>
+    <section class="container">
+            <form class="input-group my-3 p-2" id="referralForm">
+                <input type="text" class="form-control outline-none" name="referral" placeholder="Referral code" aria-label="Referral code" aria-describedby="button-addon2">
+                <button class="btn btn-primary" type="submit" id="button-addon2">Search</button>
+            </form>
+
+            <h1 id="count"></h1>
+        <div class="data">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">S No</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Paid</th>
+                  </tr>
+                </thead>
+                <tbody id="tableData">
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Name</td>
+                    <td>Paid</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </section>
+    <script>
+      document.getElementById('referralForm').addEventListener('submit',async (e)=>{
+        e.preventDefault();
+        document.getElementById('tableData').innerHTML = ''
+        let response = await fetch(`${window.location.origin}/referrals`,{
+          method : "POST",
+          headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  referral : document.getElementById('referralForm').referral.value
+                })
+        })
+        let jsonResp = await response.json();
+                console.log(jsonResp);
+                if(jsonResp.err){
+                  document.getElementById('count').textContent = `invalid referral`;
+                  return;
+                }
+                let len = jsonResp.len;
+                let users = jsonResp.users;
+                let paidUsers = jsonResp.paidUsers;
+        document.getElementById('count').textContent = `Total Users : ${len}, Paid Users : ${paidUsers}`;
+        let tableData = users.map((user,index) => {
+          return `
+                  <tr>
+                    <th scope="row">${index+1}</th>
+                    <td>${user.name}</td>
+                    <td>${user.isPaid ? "Paid" : "not Paid"}</td>
+                  </tr>
+          `
+        }).join('');
+        document.getElementById('tableData').innerHTML = tableData;
+      })
+    </script>
+</body>
+</html>
